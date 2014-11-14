@@ -1,0 +1,19 @@
+
+Idea: Social Brainstorming for Bioinformatics
+One of the big questions in bioinformatics is “Ok, I have data, now what?” If the field was any less complex, a single person might be able to answer this question. However, with so many directions and methods in bioinformatics -- genomics, transcriptomics, mass spectrometry, proteomics, phylogenetics, NGS, and many many others -- no one person knows what to do with all the various kinds of data.
+We aim to provide a common location for people to ask a simple question in the format “I have ______ data, what can I do with it?” and have experts or amateurs give concise answers in the format “You can try 1) ______ 2) ______ . . . N) ______” and provide citations to relevant academic resources.
+
+We will model our design around stack overflow, where answers may be voted, either up or down. It’s main purpose is to be a forum where users can come an pose questions relating to bioinformatics, this can include, clarification on biological/computational concepts, debugging code or program problems, program installation questions, equipment usage, comparing products and general questions or recommendations.
+
+To provide this service we will use node.js and our database will store information about each question in a MongoDB database.  Our user interface will be simple and robust. The main screen will have a header that have the iconic website name listed and will include a search bar where topics can be searched. There will be tab where users can log in or out on the header portion of the site page. The main body of the site will be reserved for the viewing of the questions and responses. Like stack overflow, a user can pose a question, provide a response to a question, up vote or down vote questions/responses and view other question/response trees. There will be four uses of the main body of the website page: viewing a question/responses, writing a new question, registering a new user and viewing the results of a search. 
+
+List of minimum features we will work to implement this semester:
+-	User Login/Account Management
+-	Usable search bar
+-	The functionality to write a new question.
+-	The functionality to leave response to a question.
+-	Upvote and Downvote a question or response.
+
+We will use node.js as the main structure to be a scaffold for our application; our database will employ a MongoDB database. To interaction with the database will be streamlined using Mongoose.js. We will first work to implement the application to be optimal on a mobile device with the intention that if it is optimized for mobile it will also be ideal for desktop usage.  The front end will use angular.js for the visual aspects. 
+
+Team: Nick Jensen, Ryan Hillary, and Taylin Anderson.
