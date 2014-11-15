@@ -1,0 +1,18 @@
+body {
+	background-color: #0000FF;
+}
+
+h2 {
+	font-family: Verdana;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	color: #abcdef
+}
+
+#navbar {
+	position: fixed;
+	top: 10px;
+	left 50%;
+}
