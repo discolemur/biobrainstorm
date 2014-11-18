@@ -1,0 +1,8 @@
+Here is where you can add and check off features. Once you complete one, just mark it in some way (leave it up so we know what cool things have been done).
+
+-Exact searching
+-Ambiguous searching
+-Allow formatted resposes (using html tags)
+-Home page
+-Login page
+

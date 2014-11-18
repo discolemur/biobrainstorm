@@ -1,0 +1,12 @@
+These are ideas for the colorscheme:
+
+Variety of pastel colors. Two blues, red, orange, green.
+	40FFCB, 7D6EE8, FF6E6D, E8C56D, 7BFF65
+
+Triad of pastel colors. Blue, tan, blue, green, green.
+	544EB2, FFC9AA, 8E87FF, 77CC67, 39B222
+
+Triad 2. Green, blue, green, orange, tan.
+	67B269, 7856FF, 4DFF51, CC7631, B2845D
+
+
