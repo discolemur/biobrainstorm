@@ -1,0 +1,59 @@
+User Schema:
+ID
+UserName
+Password
+Email
+Reputation
+Security Question
+Security Answer
+
+
+Messages Schema:
+ID
+userName
+messageType
+Title
+Message Body
+Children IDs
+Votes
+
+Handlers:
+
+Add new User
+logIn
+userInformation
+newQuestion
+newResponse
+votingFunc
+deleteMessage
+deleteResponse
+getOneQuestion
+getOneReponse
+
+
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var userSchema = new Schema({
+  userId = ObjectId,
+  userName:  String,
+  passWord: String,
+  emailAddress:   String,
+  reputation: Number,
+  Security Question: String,
+  Security Answer: String,
+});
+
+var messageSchema = new Schema({
+  messageId = ObjectId,
+  userName:  String,
+  tagTopics: [String]
+  title: String,
+  messageType:   String,
+  messageBody: String,
+  childrenIds: Array,
+  voteNum: Number:
+});
+
+var Users = mongoose.model('Users',userSchema)
+var Messages = mongoose.model('Messages',messageSchema)
