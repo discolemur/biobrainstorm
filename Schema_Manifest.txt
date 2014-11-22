@@ -35,25 +35,27 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  userId = ObjectId,
+  //userId = ObjectId, //built in to mongoDB, its one freaking long ID
   userName:  String,
   passWord: String,
   emailAddress:   String,
-  reputation: Number,
-  Security Question: String,
-  Security Answer: String,
+  //reputation: Number, //possible future functionality
+  //Security Question: String,  //possible future functionality
+  //Security Answer: String,  //possible future functionality
 });
 
-var messageSchema = new Schema({
-  messageId = ObjectId,
-  userName:  String,
-  tagTopics: [String]
-  title: String,
+var questionsSchema = new Schema({
+  //messageId = ObjectId, //built in to mongoDB, its one freaking long ID
+  userName:  String, 
+  tagTopics: [String] // possible method to find search results
+  title: String, 
   messageType:   String,
   messageBody: String,
   childrenIds: Array,
-  voteNum: Number:
+  voteNum: Number,
 });
 
+var responsesSchema = new Schema({}); // might be easier to keep questions and reponses separate // 
+
 var Users = mongoose.model('Users',userSchema)
-var Messages = mongoose.model('Messages',messageSchema)
+var Questions = mongoose.model('Questions',questionsSchema)
