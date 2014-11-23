@@ -19,6 +19,8 @@ var config = require('./config.json');
 var app = express();
 app.set('port', config.port);
 app.use(router);
+app.use(express.static(__dirname + '/public/stylesheets'));
+
 
 /*
  * Start server.
