@@ -1,0 +1,3 @@
+RH: To access the DBs from the .js code it will require that the DBs be started. Where will this code be housed when the website is public?
+I ask mainly because I need to specify where the DBs are to connect in the code, and also we will need a script to actually start 
+the mongoDBs individually, I dont think I can start the mongoDB's from the .js code. 

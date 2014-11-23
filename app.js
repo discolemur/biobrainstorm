@@ -25,6 +25,10 @@ app.use(express.static(__dirname + '/public/stylesheets'));
 /*
  * Start server.
  */
+ 
+ /*
+ * Check that DB's are accessible. <---
+ */
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Server is running on port ' + app.get('port'));
