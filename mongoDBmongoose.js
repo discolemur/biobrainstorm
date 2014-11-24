@@ -3,7 +3,7 @@ console.log(process.argv)
 var sum = process.argv[2]
 console.log(sum)
 var fs = require('fs')
-var fileStuff = fs.readFile('/Users/ryanhillary/Desktop/nodejs/stuff.txt',callback)
+var fileStuff = fs.readFile('/Users/ryanhillary/Desktop/nodejs/stuff.txt',callback) // just me figuring things out
 //var str = fileStuff.toString()
 //console.log(str)
 function callback (err,data) {
