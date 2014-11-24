@@ -47,6 +47,7 @@ if('/signin' == testOption) {
       console.log(users.userName, users.passWord, users.emailAddress)
       var jsonBro = JSON.stringify(users)
       console.log(jsonBro)
+      mongoose.connection.close()
     }
   })
 }
