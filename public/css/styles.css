@@ -26,6 +26,10 @@ h2 {
 	width: 100%;
 }
 
+#body * {
+	text-align: center;
+}
+
 #footer {
 	position: absolute;
 	bottom: 0;

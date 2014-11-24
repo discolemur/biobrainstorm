@@ -4,7 +4,9 @@
 
 var http = require('http');
 var express = require('express');
-var router = require('./js/router.js');
+var router = require('./router.js');
+var path = require('path');
+var mongoose = require('mongoose');
 
 /*
  * Load config
@@ -19,17 +21,17 @@ var config = require('./config.json');
 var app = express();
 app.set('port', config.port);
 app.use(router);
-app.use(express.static(__dirname + '/public/stylesheets'));
 
+ /*
+ * Connect to DB
+ */
+
+//mongoose.connect(config.database.url);
 
 /*
  * Start server.
  */
  
- /*
- * Check that DB's are accessible. <---
- */
-
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Server is running on port ' + app.get('port'));
 });
