@@ -2,4 +2,20 @@ RH: To access the DBs from the .js code it will require that the DBs be started.
 I ask mainly because I need to specify where the DBs are to connect in the code, and also we will need a script to actually start 
 the mongoDBs individually, I dont think I can start the mongoDB's from the .js code. 
 
-NJ: I put a database connect line in the app.js file. The listening port for mongodb is 27017. I commented it out so that it doesn't crash the app when mongodb is not running. Ryan, can you send us info about starting the database?
+Taylin: I would think the mongodb would be running on the same server that our website is running. Unless we wanted to have 2 servers.
+One that handled all of our web requests and another that ran our mongodb. Our first server could then connect to the second whenever it
+needed to interact with it. Just to be sure though you mean in order to to start the DB you have to enter mongod into a terminal and usually you cant do that in 
+node? I found a few lines that will do that for you.
+
+var sys = require('sys')
+var exec = require('child_process').exec;
+var child = exec("mongod",function(error, stdout, stderr){
+        if (error!== null){
+                console.log('exec error: ' + error);
+        }
+});
+
+if you add that to the begining of your mongoDBmongoose.js it will call mongod from the terminal
+
+NJ:  I put a database connect line in the app.js file. The listening port for mongodb is 27017. I commented it out so that it doesn't crash the app when mongodb is not running. Ryan, can you send us info about starting the database?
+
