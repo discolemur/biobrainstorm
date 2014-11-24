@@ -1,22 +1,36 @@
 console.log("Start")
-console.log(process.argv)
+
+//Tells a unix based system to call mongod
+var sys = require('sys')
+var exec = require('child_process').exec;
+var child = exec("mongod",function(error, stdout, stderr){
+	if (error!== null){
+		console.log('exec error: ' + error);
+		console.log('exec error: mongod may already be running')
+	}
+});
+
+//console.log(process.argv)
 var sum = process.argv[2]
-console.log(sum)
+//console.log(sum)
 var fs = require('fs')
-var fileStuff = fs.readFile('/Users/ryanhillary/Desktop/nodejs/stuff.txt',callback) // just me figuring things out
+var fileStuff = fs.readFile('js/router.js',callback) // just me figuring things out
 //var str = fileStuff.toString()
 //console.log(str)
 function callback (err,data) {
 	//var moreStuff = fs.readFile('/Users/ryanhillary/Desktop/stuff.txt')
+	if (err){
+		console.log("Readfile caught error")
+	}
 	var str= data.toString()
-	console.log(str)
-	console.log("success")
+//	console.log(str)
+//	console.log("success")
 }
 
 //connect to a mongo DB using mongoose
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/Users/ryanhillary/Desktop/nodejs/userDB');
+mongoose.connect('mongodb://localhost/biobrainstorm');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -50,7 +64,7 @@ Users.find().distinct('_id', function(error, ids) {
     console.log(ids)
 });
 
-mongoose.connect('mongodb://localhost/Users/ryanhillary/Desktop/nodejs/questionsDB');
+mongoose.connect('mongodb://localhost/biobrainstorm');
 var dbQuestions = mongoose.connection;
 dbQuestions.on('error', console.error.bind(console, 'connection error:'));
 dbQuestions.once('open', function callback () {
