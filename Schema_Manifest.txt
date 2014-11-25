@@ -21,7 +21,7 @@ Handlers:
 
 Add new User
 logIn
-userInformation
+//userInformation
 newQuestion
 newResponse
 votingFunc
