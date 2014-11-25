@@ -35,6 +35,10 @@ router.get('/post_question', function(req, res) {
 	res.sendFile(__dirname + '/public/post_question.html');
 });
 
+router.get('/view_all', function(req, res) {
+	res.sendFile(__dirname + '/public/view_all.html');
+});
+
 router.all('*', function(req, res){
 	res.sendStatus(404);
 })
