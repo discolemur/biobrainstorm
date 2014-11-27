@@ -1,15 +1,6 @@
-html, body, #container {
-	height: 100%;
-}
-
-body > #container {
-	height: auto;
-	min-height: 100%;
-}
-
 body {
-	margin: 0px;
 	background-color: #B2845D;
+	margin: 0;
 }
 
 ul {
@@ -26,81 +17,49 @@ a {
 	text-decoration: none;
 }
 
-#container {
-	position: relative;
-	height: auto;
-	width: 100%;
-}
-
-#navbar {
-	position: fixed;
-	width: 100%;
-	top: 0;
-	left: 0;
-	padding: 1em;
-	background-color: #40FFCB;
-}
-
-#navbar ul {
-	text-align: right;
-	padding-right: 5%;
-}
-
-#navbar ul li {
-	padding-left: 1em;
-}
-
-#navbar ul li p {
-	padding-left: 6em;
-	padding-right: 2em;
-	display: inline;
-}
-
-#navhome {
-	width: auto;
-	display: inline;
-	text-align: left;
-	padding-left: 10%;
-}
-
-.body {
+.container {
 	background-color: #7BFF65;
 	position: absolute;
 	text-align: center;
+	height 100%;
 	width: 70%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 3.2em;
+	padding-top: 5em;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 }
 
+.container * {
+	text-align: center;
+	margin: auto;
+}
+
 .title {
+	margin-top: 10%;
 	font-family: Verdana;
 	font-weight: bold;
+	font-size: 2em;
 	text-align: left;
 	color: #67B269;
 }
 
-.body * {
-	text-align: center;
-}
-
-#footer {
+.center {
 	position: relative;
-	text-align: center;
-	background-color: #FF6E6D;
-	clear: both;
-	z-index: 10;
-	padding: .5em;
-	height: auto;
-	margin-top: -2.15em;
+	top: 20%;
+	min-width: 50%;
+	max-width: 70%;
+	min-height: 25%;
+	max-height: 50%;
+	padding: 2em;
+	margin: 0 auto;
 }
 
-#footer p {
-	display: inline;
+#middlesearch {
+	text-align: left;
+	font-size: 2em;
+	width: 100%;
 }
-

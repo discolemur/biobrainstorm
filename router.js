@@ -8,35 +8,35 @@ router = express.Router();
 router.use(express.static(__dirname + '/public'));
 
 router.get('/', function(req, res) {
-	res.sendFile(__dirname + '/public/home.html');
+	res.render('home', { title: 'Title Goes Here' });
 });
 
 router.get('/home', function(req, res) {
-	res.sendFile(__dirname + '/public/home.html');
+	res.render('home', { title: 'Title Goes Here' });
 });
 
 router.get('/signin', function(req, res) {
-	res.sendFile(__dirname + '/public/signin.html');
+	res.render('signin', { title: 'Sign In' });
 });
 
 router.get('/signup', function(req, res) {
-	res.sendFile(__dirname + '/public/signup.html');
+	res.render('signup', { title: 'Sign Up' });
 });
 
 router.get('/about', function(req, res) {
-	res.sendFile(__dirname + '/public/about.html');
+	res.render('about', { title: 'About' });
 });
 
 router.get('/contact', function(req, res) {
-	res.sendFile(__dirname + '/public/contact.html');
+	res.render('contact', { title: 'Contact' });
 });
 
 router.get('/post_question', function(req, res) {
-	res.sendFile(__dirname + '/public/post_question.html');
+	res.render('post_question', { title: 'Post Your Question' });
 });
 
 router.get('/view_all', function(req, res) {
-	res.sendFile(__dirname + '/public/view_all.html');
+	res.render('view_all', { title: 'All Questions' });
 });
 
 router.all('*', function(req, res){
