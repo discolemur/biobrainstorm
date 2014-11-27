@@ -29,16 +29,13 @@
 	padding-left: 10%;
 }
 
-#navsearch {
-	text-align: left;
-}
-
 #footer {
 	position: fixed;
 	top: 100%;
 	text-align: center;
 	background-color: #FF6E6D;
-	padding: .5em;
+	padding-top: .5em;
+	padding-bottom: .5em;
 	margin-top: -2.15em;
 	width: 100%;
 }
@@ -47,3 +44,6 @@
 	display: inline;
 }
 
+#footer a {
+	padding-left: 2em;
+}

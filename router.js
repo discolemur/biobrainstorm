@@ -35,8 +35,8 @@ router.get('/post_question', function(req, res) {
 	res.render('post_question', { title: 'Post Your Question' });
 });
 
-router.get('/view_all', function(req, res) {
-	res.render('view_all', { title: 'All Questions' });
+router.get('/view_unanswered', function(req, res) {
+	res.render('view_unanswered', { title: 'All Questions' });
 });
 
 router.all('*', function(req, res){
