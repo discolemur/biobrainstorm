@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <!-- THIS IS A TEMPLATE FOR ALL PAGES -->
-<html>
+<html ng-app='bioApp'>
 	<head>
 		<link type="text/css" rel="stylesheet" href="/css/styles.css"/>
 		<link type="text/css" rel="stylesheet" href="/css/header_footer.css"/>
 		<link type="text/js" rel="javascript" href="/js/shared.js"/>
+
+		<script src="/angular/angular/angular.min.js">
+		</script>
+		<script src="/angular/controllers.js">
+		</script>
 		<title><%= title %></title>
+
 	</head>
 	<body>
-
-<%- body %>
-<% include header %>
-<% include footer %>
+		<%- body %>
+		<% include header %>
+		<% include footer %>
 	</body>
 </html>

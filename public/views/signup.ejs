@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller='signup'>
 	<div class="title">
 		<p>Sign Up</p>
 	</div>
@@ -6,21 +6,21 @@
 	<tbody>
 		<tr>
 			<td>Username</td>
-			<td><input type="text" class="input"></td>
+			<td><input type="text" class="input" ng-model="requestedUserName"></td>
 		</tr>
 		<tr>
 			<td>Password</td>
-			<td><input type="password" class="input"></td>
+			<td><input type="password" class="input" ng-model="requestedPassword"></td>
 		</tr>
 		<tr>
 			<td>Verify Password</td>
-			<td><input type="password" class="input"></td>
+			<td><input type="password" class="input" ng-model="verifyPassword"></td>
 		</tr>
 		<tr>
 			<td>Email</td>
-			<td><input type="text" class="input"></td>
+			<td><input type="text" class="input" ng-model="email"></td>
 		</tr>
 	</tbody>
 	</table>
-	<div>Sign Up Button</div>
+	<button ng-click="signup()">Sign Up</button>
 </div>

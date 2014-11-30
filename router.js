@@ -8,7 +8,7 @@ router = express.Router();
 router.use(express.static(__dirname + '/public'));
 
 router.get('/', function(req, res) {
-	res.render('home', { title: 'Title Goes Here' });
+	res.render('layout', { title: 'Title Goes Here' });
 });
 
 router.get('/home', function(req, res) {
