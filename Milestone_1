@@ -1,0 +1,7 @@
+Milestone 1
+
+We have made a lot of progress, We have three people in our group doing different aspects of the website, one is working on the front end with HTML, CSS, another is working on the middle ware using angular.js and one is working on the back end using javascript, node,js, mongoose and mongoDB. We have many of the methods coded and understand the methods we will be using and implementing. If you access the website you will be able to see features and visual options. The middle ware is also up on our Github site, and the handlers, the mongoDB itself and some of the code has been uploaded to Github as well. Now that we understand the functionalities of our front end, middle ware and back end coding/DB languages we are now working to splice all the parts together. (i.e. front end passing user input through the middle ware to the back end, having the back end check the DB, verify and send a JSON response back through the middle ware to the front end to display results.) We have all the steps, now we are working to tie them together. 
+
+Nick Jensen: Front End/Middle Ware (Javascript, HTML, CSS)
+Taylin Anderson: Middle Ware/Front End (Javascript, Angular.js)
+Ryan Hillary: Back End (Javascript, node.js, mongoose.js, mongoDB)
