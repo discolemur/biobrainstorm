@@ -20,6 +20,7 @@
     "ejs": "^1.0.0",
     "express": "^4.10.2",
     "express-partials": "^0.3.0",
+    "fs": "0.0.2",
     "http": "0.0.0",
     "mongodb": "^1.4.22",
     "mongoose": "^3.8.19",

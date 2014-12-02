@@ -1,5 +1,5 @@
 body {
-	background-color: #B2845D;
+	background-color: #52C5CC;
 	margin: 0;
 }
 
@@ -26,7 +26,7 @@ a {
 }
 
 .container {
-	background-color: #7BFF65;
+	background-color: #B3FBFF;
 	position: absolute;
 	text-align: center;
 	height: 100%;
@@ -47,11 +47,22 @@ a {
 
 .title {
 	margin-top: 10%;
+	margin-bottom: 1%;
 	font-family: Verdana;
 	font-weight: bold;
 	font-size: 2em;
 	text-align: left;
-	color: #67B269;
+	color: #597D7F;
+}
+
+.subtitle {
+	margin-top: 1%;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 1.25em;
+	text-align: left;
+	font-variant: small-caps;
+	color: #597D7F;
 }
 
 .center {

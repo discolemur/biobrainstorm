@@ -4,7 +4,7 @@
 	top: 0;
 	left: 0;
 	padding: 1em;
-	background-color: #40FFCB;
+	background-color: #337B7F;
 }
 
 #navbar ul {
@@ -22,6 +22,10 @@
 	display: inline;
 }
 
+#navbar a {
+	color: #B3FBFF;
+}
+
 #navtitle {
 	width: auto;
 	display: inline;
@@ -33,7 +37,7 @@
 	position: fixed;
 	top: 100%;
 	text-align: center;
-	background-color: #FF6E6D;
+	background-color: #66F6FF;
 	padding-top: .5em;
 	padding-bottom: .5em;
 	margin-top: -2.15em;

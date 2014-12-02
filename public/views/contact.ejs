@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="contact_us">
 	<div class="title">
 		<p>Contact<p>
 	</div>
@@ -8,14 +8,14 @@
 		<tbody>
 			<tr>
 				<td>Give us your email address</td>
-				<td><input type="text" class="input"></td>
+				<td><input type="text" class="input" ng-model="email"></td>
 			</tr>
 			<tr>
 				<td>Write your comment</td>
-				<td><input type="text" class="input"></td>
+				<td><input type="text" class="input" ng-model="comment"></td>
 			</tr>
 		</tbody>
 		</table>
-		<p>SUBMIT BUTTON</p>
+		<button ng-click="contact_us()">Send Message</button>
 	</div>
 </div>

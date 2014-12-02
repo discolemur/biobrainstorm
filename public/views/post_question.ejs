@@ -1,18 +1,18 @@
-<div class="container">
+<div class="container" ng-controller='post_question'>
 	<div class="title">
 		<p>Ask About Your Data</p>
 	</div>
 	<table>
         <tbody>
                 <tr>
-                        <td>Describe your data. </td>
-                        <td><input type="text" class="input"></td>
+                        <td>Describe your data </td>
+                        <td><input type="text" class="input" ng-model="description"></td>
                 </tr>
                 <tr>
-			<td>Enter some keywords (optional). </td>
-                        <td><input type="text" class="input"></td>
+			<td>Tags (deliminate with a space)</td>
+                        <td><input type="text" class="input" ng-model="tags"></td>
                 </tr>
         </tbody>
         </table>
-	<p>POST BUTTON</p>
+	<button ng-click="post_question()">Post</button>
 </div>

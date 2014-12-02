@@ -3,6 +3,8 @@
  */
 
 var http = require('http');
+var https = require('https');
+var fs = require('fs');
 var express = require('express');
 var router = require('./router.js');
 var path = require('path');
@@ -27,6 +29,17 @@ app.set('view engine', 'ejs');
 app.use(partials());
 app.use(router);
 
+/*
+ * Security, I hope.
+ */
+
+/*
+var options = {
+ key: fs.readFileSync('ssl/key.pem'),
+ cert: fs.readFileSync('ssl/server.crt')
+};
+*/
+
  /*
  * Connect to DB
  */
@@ -36,8 +49,12 @@ mongoose.connect(config.database.url);
 /*
  * Start server.
  */
- 
 http.createServer(app).listen(app.get('port'), function() {
-	console.log('Server is running on port ' + app.get('port'));
+	console.log('Insecure server is running on port ' + app.get('port'));
+}); 
+/*
+https.createServer(options, app).listen(app.get('port'), function() {
+	console.log('Secure server is running on port ' + app.get('port'));
 });
+*/
 

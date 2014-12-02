@@ -8,11 +8,11 @@ router = express.Router();
 router.use(express.static(__dirname + '/public'));
 
 router.get('/', function(req, res) {
-	res.render('home', { title: 'Title Goes Here' });
+	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
 });
 
 router.get('/home', function(req, res) {
-	res.render('home', { title: 'Title Goes Here' });
+	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
 });
 
 router.get('/signin', function(req, res) {
