@@ -25,5 +25,8 @@
     "mongodb": "^1.4.22",
     "mongoose": "^3.8.19",
     "path": "^0.4.9"
+  },
+  "scripts": {
+     "start": "mongod & node app.js &"
   }
 }
