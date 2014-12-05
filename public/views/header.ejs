@@ -5,6 +5,6 @@
 		<li><a href="/view_unanswered">View Unanswered</a></li>
 		<li><a href="/signin">Sign In</a></li>
 		<li><a href="/signup">Sign Up</a></li>
-		<li><input type='text' class='input'></li>
+		<li><form ng-controller='search' ng-submit='headerSearch()'><input type='text' placeholder = 'Search' value tabindex='1' autocomplete='off' ng-model='headerSearchBar'></form></li>
 	</ul>
 </div>

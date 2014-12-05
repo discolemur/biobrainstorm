@@ -119,3 +119,17 @@ bioApp.controller('contact_us', ['$scope', '$http',
 			//and if matching record is found do something with it
 		}
 	}]);
+
+bioApp.controller('search', ['$scope', '$http',
+	function($scope, $http){
+		$scope.headerSearchBar = '';
+		$scope.searchBar = '';
+
+		$scope.headerSearch = function(){
+			$scope.headerSearchBar = 'Submitted search';
+		}
+
+		$scope.submitSearch = function(){
+			$scope.searchBar = 'submitted search';
+		}		
+	}]);
