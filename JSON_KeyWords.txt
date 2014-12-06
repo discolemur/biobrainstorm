@@ -10,7 +10,7 @@ emailAddress: String
 
 
 Message JSON //for both Question and Responses
-
+_id: String       //Documents ID this is what I will need back when asking for delete/post/get handlers are called
 userName: String,
 tagTopics: [String], 	  // only used for Question types, empty for response types
 title: String, 			    //only used for Question types, NULL for response
@@ -39,6 +39,7 @@ userName: Bob
 passWord: Dude
 
 Back End -> Middleware JSON
+_id: String 
 userName: Bob
 passWord: Dude
 emailAddress: stuff@gmail.com
@@ -52,12 +53,16 @@ status: Failure
 signup------------------------------
 
 MiddleWare -> Back End JSON
+_id: String 
 userName: Bob
 passWord: Dude
 emailAddress: stuff@gmail.com
 
 Back End -> Middleware JSON
-status: Success -or- status: Failure
+status: Success
+_id: String 
+-or- 
+status: Failure
 
 
 
@@ -71,7 +76,10 @@ title: String, //title of the question
 messageBody: String, //entire Body Text
 
 Back End -> Middleware JSON
-status: Success -or- status: Failure
+status: Success
+_id: String 
+-or- 
+status: Failure
 
 
 
@@ -84,7 +92,10 @@ userName: String,
 messageBody: String, //entire Body Text
 
 Back End -> Middleware JSON
-status: Success -or- status: Failure
+status: Success
+_id: String 
+-or- 
+status: Failure
 
 
 
@@ -119,7 +130,10 @@ id: String //ID of the response to be voted
 voteType: Up -or- voteType: Down
  
 Back End -> Middleware JSON
-status: Success -or- status: Failure
+status: Success
+_id: String 
+-or- 
+status: Failure
 
 
 
@@ -131,6 +145,7 @@ MiddleWare -> Back End JSON
 id: String //ID of the question to be returned
 
 Back End -> Middleware JSON
+_id: String 
 userName: String,
 tagTopics: [String], // possible method to find search results
 title: String, 
@@ -151,6 +166,7 @@ MiddleWare -> Back End JSON
 id: String //ID of the response to be accessed
 
 Back End -> Middleware JSON
+_id: String, 
 userName: String,
 tagTopics: [String], 	//Empty for Response type
 title: String, 			//NULL for Response type
@@ -171,6 +187,7 @@ searchValue: string
 
 Back End -> Middleware JSON
 LIST/ARRAY OF JSON OBJECTS WILL BE RETURNED
+_id: String, 
 userName: String,
 tagTopics: [String], 	
 title: String, 			
