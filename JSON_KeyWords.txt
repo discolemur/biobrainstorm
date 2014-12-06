@@ -39,7 +39,6 @@ userName: Bob
 passWord: Dude
 
 Back End -> Middleware JSON
-status: Success
 userName: Bob
 passWord: Dude
 emailAddress: stuff@gmail.com
@@ -132,7 +131,6 @@ MiddleWare -> Back End JSON
 id: String //ID of the question to be returned
 
 Back End -> Middleware JSON
-status: Success
 userName: String,
 tagTopics: [String], // possible method to find search results
 title: String, 
@@ -153,7 +151,6 @@ MiddleWare -> Back End JSON
 id: String //ID of the response to be accessed
 
 Back End -> Middleware JSON
-status: Success
 userName: String,
 tagTopics: [String], 	//Empty for Response type
 title: String, 			//NULL for Response type
@@ -173,8 +170,7 @@ MiddleWare -> Back End JSON
 searchValue: string
 
 Back End -> Middleware JSON
-LIST OF JSON OBJECTS WILL BE RETURNED
-
+LIST/ARRAY OF JSON OBJECTS WILL BE RETURNED
 userName: String,
 tagTopics: [String], 	
 title: String, 			
