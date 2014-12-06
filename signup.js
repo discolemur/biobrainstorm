@@ -43,8 +43,8 @@ function signup(jsonBroIn){
   }
   else {
     console.log('Saved ', data );
-      var itWorked = {'status':'Success'};
-      var jsonBro = JSON.stringify(itWorked)
+      //var itWorked = {'status':'Success'};
+      var jsonBro = JSON.stringify(data)
       mongoose.connection.close()
       return jsonBro
   }
