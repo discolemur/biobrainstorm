@@ -1,0 +1,187 @@
+JSON
+
+----------------------------------------
+
+User JSON
+
+userName: String 
+passWord: String
+emailAddress: String
+
+
+Message JSON //for both Question and Responses
+
+userName: String,
+tagTopics: [String], 	  // only used for Question types, empty for response types
+title: String, 			    //only used for Question types, NULL for response
+messageType:   String,  // whether Question or Response
+messageBody: String,  	//entire question text
+associatedIds: Array, 	//for the Question object it is its childrens ID for response it is solely its parent's ID
+voteNum: Number 		    //number of votes, default = 1
+
+Status JSON 
+
+status: String //either Success or Failure
+
+Other JSON 
+
+voteType: String //either Up or Down
+searchValue: String 
+
+---------------------------------------
+
+Handler interactions: This is what I expect from you and what you will get in return
+
+signin-------------------------------
+
+MiddleWare -> Back End JSON
+userName: Bob
+passWord: Dude
+
+Back End -> Middleware JSON
+status: Success
+userName: Bob
+passWord: Dude
+emailAddress: stuff@gmail.com
+-or-
+status: Failure
+
+
+
+
+
+signup------------------------------
+
+MiddleWare -> Back End JSON
+userName: Bob
+passWord: Dude
+emailAddress: stuff@gmail.com
+
+Back End -> Middleware JSON
+status: Success -or- status: Failure
+
+
+
+
+post_question---------------------------
+
+MiddleWare -> Back End JSON
+userName: String,
+tagTopics: [String],
+title: String, //title of the question
+messageBody: String, //entire Body Text
+
+Back End -> Middleware JSON
+status: Success -or- status: Failure
+
+
+
+
+post_response--------------------------
+
+MiddleWare -> Back End JSON
+parentID: string //I will need this to add to the parent/question associatedID array and add to the response associated array
+userName: String,
+messageBody: String, //entire Body Text
+
+Back End -> Middleware JSON
+status: Success -or- status: Failure
+
+
+
+
+delete_question--------------------------
+
+MiddleWare -> Back End JSON
+id: String //ID of the question to be deleted
+
+Back End -> Middleware JSON
+status: Success -or- status: Failure
+
+
+
+
+
+delete_response--------------------------
+
+MiddleWare -> Back End JSON
+id: String //ID of the response to be deleted
+
+Back End -> Middleware JSON
+status: Success -or- status: Failure
+
+
+
+
+voting-----------------------------------
+
+MiddleWare -> Back End JSON
+id: String //ID of the response to be voted
+voteType: Up -or- voteType: Down
+ 
+Back End -> Middleware JSON
+status: Success -or- status: Failure
+
+
+
+
+
+get_one_question-------------------------
+
+MiddleWare -> Back End JSON
+id: String //ID of the question to be returned
+
+Back End -> Middleware JSON
+status: Success
+userName: String,
+tagTopics: [String], // possible method to find search results
+title: String, 
+messageType:   String,
+messageBody: String,
+associatedIds: Array, //Child response IDs iterate through these and call get_one_response
+voteNum: Number
+-or-
+status: Failure
+
+
+
+
+
+get_one_response-------------------------
+
+MiddleWare -> Back End JSON
+id: String //ID of the response to be accessed
+
+Back End -> Middleware JSON
+status: Success
+userName: String,
+tagTopics: [String], 	//Empty for Response type
+title: String, 			//NULL for Response type
+messageType:   String,
+messageBody: String,
+associatedIds: Array,	//This is an array of one ID, the parent Question's ID
+voteNum: Number
+-or-
+status: Failure
+
+
+
+
+search------------------------------------
+
+MiddleWare -> Back End JSON
+searchValue: string
+
+Back End -> Middleware JSON
+LIST OF JSON OBJECTS WILL BE RETURNED
+
+userName: String,
+tagTopics: [String], 	
+title: String, 			
+messageType:   String,
+messageBody: String,
+associatedIds: Array,	
+voteNum: Number
+-or-
+[] //empty JSON
+
