@@ -11,6 +11,10 @@ router.get('/', function(req, res) {
 	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
 });
 
+router.post('/test', function(req,res){
+	res.send('Sucess');
+});
+
 router.get('/home', function(req, res) {
 	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
 });

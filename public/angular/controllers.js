@@ -46,23 +46,21 @@ bioApp.controller('signup', ['$scope', '$http',
 				$scope.verifyPassword = '';
 				return false;
 			}
-			alert("You clicked the sign up button with these credentials\n" +
+			/*alert("You clicked the sign up button with these credentials\n" +
 				$scope.requestedUserName + "\n" + 
 				$scope.requestedPassword + "\n" + 
 				$scope.verifyPassword + "\n" + 
-				$scope.email + "\n");
-			//need to update this to 1. all fields are entered and valid
-			//2.make sure username is not already in use
-			//3. create new record to add to mongo database
+				$scope.email + "\n");*/
 			if(email.indexOf('@') === -1 || email.indexOf('.') === -1){
 				$scope.errorMsg = "A valid email address is required";
 				$scope.email = '';
 				$scope.emailA = '*';
 				return false;
 			}
-			var jsonCheckForDuplicateUsername = {
-				//Need to add code to create json query and send it to mongodb
-			}
+			var jsonSignUpText = '{"userName":"' + username + '","passWord":"' + password + '","emailAddress":"' + email + '"}';
+			var jsonSignUp = JSON.parse(jsonSignUpText);
+
+			$http.post("http://localhost:3000/test").success(function(data){alert("Got back: " + data);});
 			//add code to evaluate mongodb response
 			//add code to return false if username is already taken
 			//add code to create new mongodb record is username is not taken
