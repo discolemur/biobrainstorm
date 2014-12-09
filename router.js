@@ -1,11 +1,13 @@
-express = require('express')
+express = require('express');
 router = express.Router();
+bodyParser = require('body-parser');
 
 /*
  * Define routings
  */
 
 router.use(express.static(__dirname + '/public'));
+router.use(bodyParser.json());
 
 router.get('/', function(req, res) {
 	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
@@ -13,6 +15,15 @@ router.get('/', function(req, res) {
 
 router.post('/test', function(req,res){
 	res.send('Sucess');
+});
+
+router.post(/^\/search?((\w+)\+)*(\w+)$/, function(req,res){
+	res.render('home', { title: 'Biobrainstorm : test' });
+        console.log("Success");
+});
+
+router.post('/signupjson', function(req,res){
+	res.send(req.body);
 });
 
 router.get('/home', function(req, res) {
