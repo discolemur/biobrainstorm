@@ -32,10 +32,19 @@ router.get('/home', function(req, res) {
 
 router.get('/signin', function(req, res) {
 	res.render('signin', { title: 'Sign In' });
+	
 });
 
 router.get('/signup', function(req, res) {
 	res.render('signup', { title: 'Sign Up' });
+	//should look for signup2 
+	var hanlder = require('./signup2');
+	var handle_signup = function callback (jsonBroOut){
+		console.log("RETURNED!: ",jsonBroOut);
+		//_callback(jsonBroOut);
+		res.send(jsonBroOut);
+	}
+	hanlder.signup(body.req, handle_signup)
 });
 
 router.get('/about', function(req, res) {
