@@ -33,6 +33,14 @@ router.get('/home', function(req, res) {
 router.get('/signin', function(req, res) {
 	res.render('signin', { title: 'Sign In' });
 	
+	var handler = require('./signin2');
+	var handle_signin = function callback (jsonBroOut) {
+		//console.log("RETURNED!: ", jsonBroOut)
+		//_callback(jsonBroOut);
+		res.send(jsonBroOut);
+	}
+	handler.signin(jsonBroIn, handle_signin);
+	
 });
 
 router.get('/signup', function(req, res) {
@@ -40,7 +48,7 @@ router.get('/signup', function(req, res) {
 	//should look for signup2 
 	var hanlder = require('./signup2');
 	var handle_signup = function callback (jsonBroOut){
-		console.log("RETURNED!: ",jsonBroOut);
+		//console.log("RETURNED!: ",jsonBroOut);
 		//_callback(jsonBroOut);
 		res.send(jsonBroOut);
 	}
