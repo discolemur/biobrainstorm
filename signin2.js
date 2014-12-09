@@ -11,7 +11,7 @@ var signin  = function callback (jsonBroIn, _callback) {
  console.log("Validating User")
 
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/Users/ryanhillary/Desktop/nodejs/userDB');
+  mongoose.connect('mongodb://root/biobrainstorm/DB/test2');
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {
