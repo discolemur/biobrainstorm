@@ -106,9 +106,15 @@ bioApp.controller('signin', ['$scope', '$http',
 			if(!valid){
 				$scope.errorMsg = "Please be sure to fill in all data fields";
 			}else{
-				//need to add code to query for username and password combination
-				//if query returns false then alert the user
-				//else proceed
+				var jsonSignInText = '{"userName":"' + $scope.username + '","passWord":"' + $scope.password + '"}';
+				var jsonSignIn = JSON.parse(jsonSignInText);
+				$http.post("http://localhost:3000/signinjson", jsonSignIn).success(function(data){
+					if(data.status === 'Failure'){
+						$scope.errorMsg = 'Invalid username or password';
+					}else{
+						alert("Welcome " + data.userName);
+					}
+				});
 			}
 		}
 	}]);
@@ -143,10 +149,32 @@ bioApp.controller('search', ['$scope', '$http',
 		$scope.searchBar = '';
 
 		$scope.headerSearch = function(){
-			$scope.headerSearchBar = 'Submitted search';
+			var query = $scope.headerSearchBar;
+			$scope.search(query);
 		}
 
 		$scope.submitSearch = function(){
-			$scope.searchBar = 'submitted search';
+			var query = $scope.searchBar;
+			$scope.search(query);
 		}		
+
+		$scope.search = function(q){
+			alert("got here");
+			var jsonSearchText = '{"searchValue":"' + q + '"}';
+			alert(jsonSearchText);
+			var jsonSearch = JSON.parse(jsonSearchText);
+			var url = "http://localhost:3000/search?";
+			var list = q.split(" ");
+			for (var i = 0; i < list.length; i++){
+     				url = url + list[i] + "+";
+			}
+			url = url.substr(0,url.length-1);
+			$http.post(url, jsonSearch).success(function(data){
+				if(data.status === 'Failure'){
+					$scope.errorMsg = 'Invalid username or password';
+				}else{
+					alert("Welcome " + data.userName);
+				}
+			});
+		}
 	}]);
