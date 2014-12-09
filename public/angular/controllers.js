@@ -4,9 +4,23 @@
 
 var bioApp = angular.module('bioApp',[]);
 
+/* Angular Routing */
+
+/*bioApp.config(['$routeProvider',
+  function($routeProvider){
+    $routeProvider.
+      when('/signup',{
+        templateUrl: '/signup',
+	controller: 'signup'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+}]);*/
+
 /* Controllers */
 
-bioApp.controller('signup', ['$scope', '$http',
+bioApp.controller('signup', ['$scope', '$http','$location',
 	function($scope, $http){
 		$scope.errorMsg = ''
 		$scope.usernameA = ''
@@ -33,7 +47,7 @@ bioApp.controller('signup', ['$scope', '$http',
 			if (!valid){
 				$scope.errorMsg = "Please be sure to fill in all data fields";
 			}else{
-				valid = $scope.validateData($scope.requestedUserName,$scope.requestedPassword,$scope.verifyPassword,$scope.email);
+				$scope.validateData($scope.requestedUserName,$scope.requestedPassword,$scope.verifyPassword,$scope.email);
 			}
 		}
 
@@ -60,12 +74,17 @@ bioApp.controller('signup', ['$scope', '$http',
 			var jsonSignUpText = '{"userName":"' + username + '","passWord":"' + password + '","emailAddress":"' + email + '"}';
 			var jsonSignUp = JSON.parse(jsonSignUpText);
 
-			$http.post("http://localhost:3000/test").success(function(data){alert("Got back: " + data);});
-			//add code to evaluate mongodb response
-			//add code to return false if username is already taken
-			//add code to create new mongodb record is username is not taken
-			return true
+			$http.post("http://localhost:3000/signupjson", jsonSignUp).success(function(data){
+				if(data.status === 'Failure'){
+					$scope.errorMsg = "Unable to register selected User Name";	
+				}else{
+					alert("Welcome " + data.userName);
+					window.location.href="/home";
+				}
+			});
 		}
+
+		
 	}]);
 
 bioApp.controller('signin', ['$scope', '$http',
