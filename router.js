@@ -74,11 +74,8 @@ router.post('/post_questionhandler', function(req, res) {
 	//_callback(jsonBroOut);
 	res.send(jsonBroOut);
 	};
-	
 	handler.post_question(req.body, handle_post_question);
 });
-
-
 
 //added RH
 router.get('/post_response', function(req, res) {
@@ -87,17 +84,26 @@ router.get('/post_response', function(req, res) {
 
 router.post('/post_responsehandler', function(req, res) {
 	var handler = require('./post_response2');
-	var handle_post_question = function callback (jsonBroOut) {
+	var handle_post_response = function callback (jsonBroOut) {
 	//console.log("RETURNED!: ", jsonBroOut)
 	//_callback(jsonBroOut);
 	res.send(jsonBroOut);
 	};
-	
 	handler.post_response(req.body, handle_post_response);
 });
 //added RH
 router.get('/voting', function(req, res) {
 	res.render('voting', { title: 'Vote' });
+});
+
+router.post('/votinghandler', function(req, res) {
+	var handler = require('./voting2');
+	var handle_voting = function callback (jsonBroOut) {
+	//console.log("RETURNED!: ", jsonBroOut)
+	//_callback(jsonBroOut);
+	res.send(jsonBroOut);
+	};
+	handler.voting(req.body, handle_voting);
 });
 //added RH
 router.get('/get_one_question', function(req, res) {
