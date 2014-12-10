@@ -66,6 +66,20 @@ router.post('/signuphandler', function(req, res) {
 router.get('/post_question', function(req, res) {
 	res.render('post_question', { title: 'Post Your Question' });
 });
+
+router.post('/post_questionhandler', function(req, res) {
+	var handler = require('./post_question2');
+	var handle_post_question = function callback (jsonBroOut) {
+	//console.log("RETURNED!: ", jsonBroOut)
+	//_callback(jsonBroOut);
+	res.send(jsonBroOut);
+	};
+	
+	handler.post_question(req.body, handle_post_question);
+});
+
+
+
 //added RH
 router.get('/post_response', function(req, res) {
 	res.render('post_response', { title: 'Post Your Response' });
