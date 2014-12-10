@@ -3,15 +3,15 @@
 var signup  = function callback (jsonBroIn, _callback) { 
 
   console.log(jsonBroIn);
-  var jsonCast = jsonBroIn;
+  //var jsonCast = jsonBroIn;
   //var jsonCast = JSON.parse(jsonBroIn);
-  var userName = jsonCast.userName;
-  var passWord = jsonCast.passWord;
-  var emailAddress = jsonCast.emailAddress;
+  var userName = jsonBroIn.userName;
+  var passWord = jsonBroIn.passWord;
+  var emailAddress = jsonBroIn.emailAddress;
 
   console.log("Adding New User")
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://root/biobrainstorm/DB/test2');
+  mongoose.connect('mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2'');
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {
