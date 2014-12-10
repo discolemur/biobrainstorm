@@ -1,11 +1,11 @@
-<div id="navbar">
+<div id="navbar" ng-controller='signin'>
 	<ul>
 		<li id="navtitle"><a href="/home">Biobrainstorm</a></li>
 		<li><p>|</p></li>
 		<li><a href="/view_unanswered">View Unanswered</a></li>
-<!--		<li ng-if="AUTH == 'F'"><a href="/signin">Sign In</a></li>
-		<li ng-if="AUTH == 'T'"><a href="/signout">Sign Out</a></li> -->
-		<li><a href="/signin">Sign In</a></li>
+		<li>{{AUTH}}</li>
+		<li><a href="/signin" ng-if="!AUTH">Sign In</a></li>
+		<li><a href="/" ng-click="signout()" ng-if="AUTH">Sign Out{{AUTH}}</a></li>
 		<li><a href="/signup">Sign Up</a></li>
 		<li><form ng-controller='search' ng-submit='headerSearch()'><input type='text' placeholder = 'Search' value tabindex='1' autocomplete='off' ng-model='headerSearchBar'></form></li>
 	</ul>

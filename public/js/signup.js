@@ -11,6 +11,8 @@ var signup  = function callback (jsonBroIn, _callback) {
   var mongoose = require('mongoose');
   mongoose.connect('mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2');
   var db = mongoose.connection;
+  var failed = {'status':'Failure'};
+  var jsonBro = JSON.stringify(failed);
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {
     // yay!
@@ -35,22 +37,21 @@ var signup  = function callback (jsonBroIn, _callback) {
 
   defaultUser.save(function (err, data) {
   if (err) {
-  	console.log(err);
-  	var rejected = {'status':'Failure'};
-    var jsonBro = JSON.stringify(rejected)
+    console.log(err);
+    var rejected = {'status':'Invalid'};
+    jsonBro = JSON.stringify(rejected)
     mongoose.connection.close()
-    _callback(jsonBro)
   }
   else {
   	 console.log('Saved ', data );
       var success = {'status':'Success'}
       //console.log(users.userName, users.passWord, users.emailAddress)
-      var jsonBro = JSON.stringify(data)
+      jsonBro = JSON.stringify(data)
       console.log(jsonBro);
       mongoose.connection.close();
-      _callback(jsonBro);
   }
   });
+  _callback(jsonBro);
 
 };
 

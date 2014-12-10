@@ -21,6 +21,10 @@ a {
 	text-decoration: none;
 }
 
+#about_text {
+	font-size: 18pt;
+}
+
 .input {
 	text-align: left;
 }

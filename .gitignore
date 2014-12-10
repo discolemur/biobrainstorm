@@ -3,3 +3,4 @@ database/*
 DB/*
 *.log
 ssl/*
+log.txt

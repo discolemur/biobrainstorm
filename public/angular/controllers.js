@@ -61,7 +61,9 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 			var jsonSignUp = JSON.parse(jsonSignUpText);
 
 			$http.post("/signup_user", jsonSignUp).success(function(data){
-				if(data.status === 'Failure'){
+				if (data.status == 'Failure') {
+					$scope.errorMsg = 'Internal server error.';
+				}else if(data.status === 'Rejected'){
 					$scope.errorMsg = "Unable to register selected User Name";	
 				}else{
 					alert("Welcome " + data.userName);
@@ -73,15 +75,14 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 		
 	}]);
 
-bioApp.controller('signin', ['$scope', '$http',
-	function($scope, $http){
+bioApp.controller('signin', ['$scope', '$rootScope', '$http',
+	function($scope, $rootScope, $http){
 		$scope.errorMsg = '';
 		$scope.username = '';
 		$scope.password = '';
 		$scope.userA = '';
 		$scope.passwordA = '';
-	
-		$scope.signin = function(){
+		$scope.signin = function() {
 			$scope.errorMsg = '';
 			$scope.userA = '';
 			$scope.passwordA = '';
@@ -96,15 +97,22 @@ bioApp.controller('signin', ['$scope', '$http',
 				var jsonSignIn = JSON.parse(jsonSignInText);
 				$http.post("/signin_user", jsonSignIn).success(function(data){
 					if(data.status === 'Failure'){
+						$scope.errorMsg = 'Internal server error.';
+					} else if(data.status === 'Invalid'){
 						$scope.errorMsg = 'Invalid username or password';
 					}else{
+					        $rootScope.AUTH = true;
 						alert("Welcome " + data.userName);
-					        $scope.AUTH = 'T'
 					}
 				});
 			}
 		}
+		$scope.signout = function() {
+			alert("Signing out.");
+			$rootScope.AUTH = false;
+		}
 	}]);
+
 
 bioApp.controller('post_question', ['$scope', '$http',
 	function($scope, $http){
@@ -143,7 +151,7 @@ bioApp.controller('search', ['$scope', '$http',
 		$scope.submitSearch = function(){
 			var query = $scope.searchBar;
 			$scope.search(query);
-		}		
+		}
 
 		$scope.search = function(q){
 			alert("got here");
