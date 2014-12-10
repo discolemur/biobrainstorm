@@ -44,7 +44,14 @@ var options = {
  * Connect to DB
  */
 
-//mongoose.connect(config.database.url);
+mongoose.connect(config.database.url);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  // yay!
+  console.log("Connected to usersDB Successfully")
+});
+
 
 /*
  * Start server.

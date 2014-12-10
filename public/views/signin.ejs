@@ -1,24 +1,22 @@
-<div class="container" ng-controller='signin'>
+<form class="container" ng-controller='signin' ng-submit='signin()'>
 	<div class="title">
 		<p>Sign In</p>
 	</div>
 	<table>
-	<tbody>
-		<tr>
-			<td>Username</td>
-			<td><input type="text" class="input" ng-model='username'></td>
-			<td>{{userA}}</td>
-		</tr>
-		<tr>
-			<td>Password</td>
-			<td><input type="password" class="input" ng-model='password'></td>
-			<td>{{passwordA}}</td>
-		</tr>
-	</tbody>
+		<tbody>
+			<tr>
+				<td>Username</td>
+				<td><input type="text" class="input" ng-model='username'></td>
+				<td>{{userA}}</td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" class="input" ng-model='password'"></td>
+				<td>{{passwordA}}</td>
+			</tr>
+		</tbody>
 	</table>
 	<p>{{errorMsg}}</p>
-	<p>{{AUTH}}</p>
 	<button ng-click="signin()">Sign In</button>
 	<p>Don't have an account? <a href="/signup">Create one.</a></p>
-
-</div>
+</form>

@@ -1,3 +1,3 @@
 #! /bin/bash
 
-forever app.js >> ~/biobrainstorm/log.txt 2>&1 &
+forever app.js >> /root/biobrainstorm/server.log 2>&1 &

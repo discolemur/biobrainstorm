@@ -1,3 +1,3 @@
 #! /bin/bash
 
-nodemon app.js >> ~/biobrainstorm/log.txt 2>&1 &
+nodemon app.js >> /root/biobrainstorm/server.log 2>&1 &

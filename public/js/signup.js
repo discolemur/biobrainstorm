@@ -8,16 +8,8 @@ var signup  = function callback (jsonBroIn, _callback) {
   var emailAddress = jsonBroIn.emailAddress;
 
   console.log("Adding New User")
-  var mongoose = require('mongoose');
-  mongoose.connect('mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2');
-  var db = mongoose.connection;
   var failed = {'status':'Failure'};
   var jsonBro = JSON.stringify(failed);
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function callback () {
-    // yay!
-    console.log("Connected to usersDB Successfully")
-  });
 
   //var Schema = mongoose.Schema;
 
@@ -36,22 +28,21 @@ var signup  = function callback (jsonBroIn, _callback) {
   console.log(defaultUser)
 
   defaultUser.save(function (err, data) {
-  if (err) {
-    console.log(err);
-    var rejected = {'status':'Invalid'};
-    jsonBro = JSON.stringify(rejected)
-    mongoose.connection.close()
-  }
-  else {
-  	 console.log('Saved ', data );
-      var success = {'status':'Success'}
-      //console.log(users.userName, users.passWord, users.emailAddress)
-      jsonBro = JSON.stringify(data)
-      console.log(jsonBro);
-      mongoose.connection.close();
-  }
+    if (err) {
+      console.log(err);
+      var rejected = {'status':'Invalid'};
+      jsonBro = JSON.stringify(rejected)
+      _callback(jsonBro);
+    }
+    else {
+     console.log('Saved ', data );
+        var success = {'status':'Success'}
+        //console.log(users.userName, users.passWord, users.emailAddress)
+        jsonBro = JSON.stringify(data)
+        console.log(jsonBro);
+        _callback(jsonBro);
+    }
   });
-  _callback(jsonBro);
 
 };
 

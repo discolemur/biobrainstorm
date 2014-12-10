@@ -37,7 +37,7 @@ router.get('/search', function(req, res) {
 // signin_user is the http request to actually sign in
 router.post('/signin_user', function(req, res) {
 	var handler = require('./public/js/signin');
-	var handle_signin = function callback (jsonBroOut) {
+	var handle_signin = function callback (err, jsonBroOut) {
 		console.log("RETURNED!: ", jsonBroOut)
 		res.send(jsonBroOut);
 	}

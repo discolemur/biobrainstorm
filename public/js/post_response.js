@@ -9,15 +9,8 @@ var post_response  = function callback (jsonBroIn, _callback) {
 
 
 
-  var mongoose = require('mongoose');
-  mongoose.connect('mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2');
-  var db = mongoose.connection;
   var rejected = {'status':'Failure'};
   var jsonBro = JSON.stringify(rejected);
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function callback () {
-    // yay!
-    console.log("Connected to usersDB Successfully")
 
   var responseInput = require('./Messages');
   
@@ -30,7 +23,7 @@ var post_response  = function callback (jsonBroIn, _callback) {
         console.log(err);
         var rejected = {'status':'Failure'};
         jsonBro = JSON.stringify(rejected)
-        mongoose.connection.close()
+        _callback(jsonBro);
       }
       else {
         console.log('Saved New Response ',data);
@@ -45,7 +38,7 @@ var post_response  = function callback (jsonBroIn, _callback) {
              console.log("NOT FOUND")
              var rejected = {'status':'Failure'};
              jsonBro = JSON.stringify(rejected)
-             mongoose.connection.close()
+             _callback(jsonBro);
              //return res.send("contact create error: " + err);
           } 
           else {
@@ -58,12 +51,11 @@ var post_response  = function callback (jsonBroIn, _callback) {
                  console.log("SUCCESS")
                  //console.log(err);
                  //console.log(model)
-                 //mongoose.connection.close()
                  var success = {'status':'Success'}
                  //console.log(users.userName, users.passWord, users.emailAddress)
                  jsonBro = JSON.stringify(model)
                  console.log(jsonBro);
-                 mongoose.connection.close();
+                 _callback(jsonBro);
                }
              )
           }
@@ -72,8 +64,6 @@ var post_response  = function callback (jsonBroIn, _callback) {
        }//get the ID
   });
  
-  });
-  _callback(jsonBro);
 
 };
 

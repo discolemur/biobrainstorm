@@ -2,7 +2,7 @@
 
 /* App Module */
 
-var bioApp = angular.module('bioApp',[]);
+var bioApp = angular.module('bioApp',['ngCookies']);
 
 /* Controllers */
 
@@ -66,7 +66,7 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 				}else if(data.status === 'Rejected'){
 					$scope.errorMsg = "Unable to register selected User Name";	
 				}else{
-					alert("Welcome " + data.userName);
+					//alert("Welcome " + data.userName);
 					window.location.href="/home";
 				}
 			});
@@ -75,13 +75,30 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 		
 	}]);
 
-bioApp.controller('signin', ['$scope', '$rootScope', '$http',
-	function($scope, $rootScope, $http){
+bioApp.controller('header', ['$scope', '$cookieStore' ,
+	function($scope, $cookieStore){
+		$scope.signout = function() {
+			$cookieStore.remove('username');
+			$cookieStore.remove('password');
+			$cookieStore.put('auth', false);
+		}
+		$scope.isAuth = function() {
+			return $cookieStore.get('auth');
+		}
+		$scope.getUsername = function() {
+			return $cookieStore.get('username');
+		}
+	}]);
+
+bioApp.controller('signin', ['$scope', '$http', '$cookieStore', '$window',
+	function($scope, $http, $cookieStore, $window){
 		$scope.errorMsg = '';
 		$scope.username = '';
 		$scope.password = '';
 		$scope.userA = '';
 		$scope.passwordA = '';
+		$cookieStore.put('auth', false);
+		$scope.AUTH = $cookieStore.get('auth');
 		$scope.signin = function() {
 			$scope.errorMsg = '';
 			$scope.userA = '';
@@ -101,15 +118,15 @@ bioApp.controller('signin', ['$scope', '$rootScope', '$http',
 					} else if(data.status === 'Invalid'){
 						$scope.errorMsg = 'Invalid username or password';
 					}else{
-					        $rootScope.AUTH = true;
-						alert("Welcome " + data.userName);
+						$cookieStore.put('auth', true);
+						$cookieStore.put('username', $scope.username);
+						$cookieStore.put('password', $scope.password);
+						$scope.AUTH = true;
+						//alert("Welcome " + data.userName);
+						$window.location.href = '/home';
 					}
 				});
 			}
-		}
-		$scope.signout = function() {
-			alert("Signing out.");
-			$rootScope.AUTH = false;
 		}
 	}]);
 
@@ -161,7 +178,7 @@ bioApp.controller('search', ['$scope', '$http',
 			var url = "/search?";
 			var list = q.split(" ");
 			for (var i = 0; i < list.length; i++){
-     				url = url + list[i] + "+";
+				url = url + list[i] + "+";
 			}
 			url = url.substr(0,url.length-1);
 			$http.post(url, jsonSearch).success(function(data){

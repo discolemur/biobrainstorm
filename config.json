@@ -2,6 +2,6 @@
 	"port" : 3000,
 
 	"database" : {
-		"url" : "mongodb://localhost:27017"
+		"url" : "mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2"
 	}
 }
