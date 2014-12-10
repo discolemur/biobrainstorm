@@ -23,7 +23,7 @@ router.get('/home', function(req, res) {
 router.get('/search', function(req, res) {
 	res.render('search', { title: 'Search' });
 	
-	var handler = require('./search2');
+	var handler = require('./public/js/search2');
 
 	var handle_search = function(jsonBroOut) {
 		//console.log("RETURNED!: ",jsonBroOut);
@@ -36,7 +36,7 @@ router.get('/search', function(req, res) {
 
 // signin_user is the http request to actually sign in
 router.post('/signin_user', function(req, res) {
-	var handler = require('./signin2');
+	var handler = require('./public/js/signin2');
 	var handle_signin = function callback (jsonBroOut) {
 	//	console.log("RETURNED!: ", jsonBroOut)
 		res.send(jsonBroOut);
@@ -51,7 +51,7 @@ router.get('/signin', function(req, res) {
 
 // signup_user is the http request to actually sign in
 router.post('/signup_user', function(req, res) {
-	var handler = require('./signup2');
+	var handler = require('./public/js/signup2');
 	var handle_signup = function callback (jsonBroOut){
 	//	console.log("RETURNED!: ",jsonBroOut);
 		res.send(jsonBroOut);
@@ -69,7 +69,7 @@ router.get('/post_question', function(req, res) {
 });
 
 router.post('/post_questionhandler', function(req, res) {
-	var handler = require('./post_question2');
+	var handler = require('./public/js/post_question2');
 	var handle_post_question = function callback (jsonBroOut) {
 	//console.log("RETURNED!: ", jsonBroOut)
 	//_callback(jsonBroOut);
@@ -84,7 +84,7 @@ router.get('/post_response', function(req, res) {
 });
 
 router.post('/post_responsehandler', function(req, res) {
-	var handler = require('./post_response2');
+	var handler = require('./public/js/post_response2');
 	var handle_post_response = function callback (jsonBroOut) {
 	//console.log("RETURNED!: ", jsonBroOut)
 	//_callback(jsonBroOut);
@@ -98,7 +98,7 @@ router.get('/voting', function(req, res) {
 });
 
 router.post('/votinghandler', function(req, res) {
-	var handler = require('./voting2');
+	var handler = require('./public/js/voting2');
 	var handle_voting = function callback (jsonBroOut) {
 	//console.log("RETURNED!: ", jsonBroOut)
 	//_callback(jsonBroOut);
@@ -112,7 +112,7 @@ router.get('/get_one_question', function(req, res) {
 	
 });
 router.post('/get_one_questionhandler', function(req, res) {
-	var handler = require('./get_one_message3');
+	var handler = require('./public/js/get_one_message3');
 	var handle_get_one_message = function callback (jsonBroOut) {
 	//console.log("RETURNED!: ", jsonBroOut)
 	//_callback(jsonBroOut);
@@ -126,7 +126,7 @@ router.get('/get_one_response', function(req, res) {
 	res.render('get_one_response', { title: 'View Response' });
 });
 router.post('/get_one_responsehandler', function(req, res) {
-	var handler = require('./get_one_message3');
+	var handler = require('./public/js/get_one_message3');
 	var handle_get_one_message = function callback (jsonBroOut) {
 	//console.log("RETURNED!: ", jsonBroOut)
 	//_callback(jsonBroOut);
@@ -151,8 +151,6 @@ router.get('/about', function(req, res) {
 router.get('/contact', function(req, res) {
 	res.render('contact', { title: 'Contact' });
 });
-
-
 
 router.get('/view_unanswered', function(req, res) {
 	res.render('view_unanswered', { title: 'All Questions' });
