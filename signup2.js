@@ -11,7 +11,7 @@ var signup  = function callback (jsonBroIn, _callback) {
 
   console.log("Adding New User")
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2'');
+  mongoose.connect('mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2');
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {
