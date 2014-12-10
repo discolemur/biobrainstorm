@@ -19,16 +19,17 @@ var signup  = function callback (jsonBroIn, _callback) {
     console.log("Connected to usersDB Successfully")
   });
 
-   var Schema = mongoose.Schema;
+  //var Schema = mongoose.Schema;
 
-  var userSchema = new Schema({
-    userName:  String,
-    passWord: String,
-    emailAddress:   String,
-  });
+  //var userSchema = new Schema({
+  //  userName:  String,
+  //  passWord: String,
+  //  emailAddress:   String,
+  //});
 
-  var Users = mongoose.model('Users',userSchema)
-
+  //var Users = mongoose.model('Users',userSchema)
+ var Users = require('./Users');
+ 
  //Should I be checking for duplcate users and returning an error if the user already exists?
 
   var defaultUser = new Users({userName: userName, passWord: passWord, emailAddress: emailAddress})
