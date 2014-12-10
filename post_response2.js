@@ -1,15 +1,11 @@
 var post_response  = function callback (jsonBroIn, _callback) { 
 
   console.log("Creating a New Response")
-  var jsonCast = JSON.parse(jsonBroIn);
-  var parentID = jsonCast.parentID;
-  var userName = jsonCast.userName;
-  var messageBody = jsonCast.messageBody;
   
 
-  //var parentID = jsonBroIn.parentID;
-  //var userName = jsonBroIn.userName;
-  //var messageBody = jsonBroIn.messageBody;
+  var parentID = jsonBroIn.parentID;
+  var userName = jsonBroIn.userName;
+  var messageBody = jsonBroIn.messageBody;
 
 
 
