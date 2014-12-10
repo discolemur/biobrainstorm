@@ -11,7 +11,7 @@ var search  = function callback (jsonBroIn, _callback) {
   console.log("Parsed:",parsedToken);
 
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://root/biobrainstorm/DB/test2');
+  mongoose.connect('mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2');
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   
