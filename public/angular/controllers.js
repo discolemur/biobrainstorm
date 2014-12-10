@@ -4,20 +4,6 @@
 
 var bioApp = angular.module('bioApp',[]);
 
-/* Angular Routing */
-
-/*bioApp.config(['$routeProvider',
-  function($routeProvider){
-    $routeProvider.
-      when('/signup',{
-        templateUrl: '/signup',
-	controller: 'signup'
-      }).
-      otherwise({
-        redirectTo: '/'
-      });
-}]);*/
-
 /* Controllers */
 
 bioApp.controller('signup', ['$scope', '$http','$location',

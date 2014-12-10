@@ -5,13 +5,13 @@
 var search  = function callback (jsonBroIn, _callback) {
 
   console.log(jsonBroIn);
-  var jsonCast = JSON.parse(jsonBroIn);
-  var parsedToken = jsonCast.searchValue;
+  
+  var parsedToken = jsonBroIn.searchValue;
   //parsedToken = 'cool'
   console.log("Parsed:",parsedToken);
 
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://root/biobrainstorm/DB/test2');
+  mongoose.connect('mongodb://root@biobrainstorm.com:27017/root/biobrainstorm/DB/test2');
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   
@@ -22,20 +22,7 @@ var search  = function callback (jsonBroIn, _callback) {
 
   });
 
-  var Schema = mongoose.Schema;
-
-  var messageSchema = new Schema({
-    userName: String,
-    tagTopics: [String], // possible method to find search results
-    title: String, 
-    messageType:   String,
-    messageBody: String,
-    associatedIds: Array,
-    voteNum: Number
-  });
-  
-  var messageDB = mongoose.model('Messages',messageSchema)
-
+  var messageDB = require('./Messages');
 
   var input = parsedToken;  // the input from your auto-complete box
   var jsonBro = 'Fail';
@@ -46,7 +33,7 @@ var search  = function callback (jsonBroIn, _callback) {
       _callback(jsonBro);
       //return jsonBro; //This is what needs to be returned!!!! 
   });
-  console.log(jsonBro);
+  //console.log(jsonBro);
   //_callback(jsonBro);
   //return jsonBro;//returned fail
 
