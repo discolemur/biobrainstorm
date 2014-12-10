@@ -20,15 +20,16 @@ var signin  = function callback (jsonBroIn, _callback) {
     console.log("Connected to usersDB Successfully")
   });
 
-  var Schema = mongoose.Schema;
+  //var Schema = mongoose.Schema;
 
-  var userSchema = new Schema({
-    userName:  String,
-    passWord: String,
-    emailAddress:   String,
-  });
+  //var userSchema = new Schema({
+  //  userName:  String,
+  //  passWord: String,
+  //  emailAddress:   String,
+  //});
 
-  var Users = mongoose.model('Users',userSchema)
+  //var Users = mongoose.model('Users',userSchema)
+  var Users = require('./Users');
 
   Users.find().distinct('userName', function(error, ids) {
     // ids is an array of all ObjectIds
