@@ -1,7 +1,7 @@
 
 var get_one_message  = function callback (jsonBroIn, _callback) {
 
-  console.log("getting question")
+  console.log("getting message")
   //var jsonCast = JSON.parse(jsonBroIn);
   //var id = jsonCast.id;
 
