@@ -110,10 +110,30 @@ router.get('/get_one_question', function(req, res) {
 	res.render('/get_one_question', { title: 'View Question' });
 	
 });
-//added RH to be implemented later, works on back end code
-router.get('/get_one_question', function(req, res) {
-	res.render('get_one_question', { title: 'View Response' });
+router.post('/get_one_questionhandler', function(req, res) {
+	var handler = require('./get_one_message3');
+	var handle_get_one_message = function callback (jsonBroOut) {
+	//console.log("RETURNED!: ", jsonBroOut)
+	//_callback(jsonBroOut);
+	res.send(jsonBroOut);
+	};
+	handler.get_one_message(req.body, handle_get_one_message);
 });
+
+//added RH to be implemented later, works on back end code
+router.get('/get_one_response', function(req, res) {
+	res.render('get_one_response', { title: 'View Response' });
+});
+router.post('/get_one_responsehandler', function(req, res) {
+	var handler = require('./get_one_message3');
+	var handle_get_one_message = function callback (jsonBroOut) {
+	//console.log("RETURNED!: ", jsonBroOut)
+	//_callback(jsonBroOut);
+	res.send(jsonBroOut);
+	};
+	handler.get_one_message(req.body, handle_get_one_message);
+});
+
 //added RH
 router.get('/delete_question', function(req, res) {
 	res.render('delete_question', { title: 'Delete Question' });
