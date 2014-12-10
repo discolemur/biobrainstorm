@@ -1,6 +1,6 @@
 
 
-var j = {"userName":"Ryan Hillary","passWord":"dude","emailAddress":"rphil@gmail.com"}
+var j = {"userName":"local","passWord":"local","emailAddress":"rphil@gmail.com"}
 //var j = {"searchValue":"cool"}
 var jsonBroIn = JSON.stringify(j);
 console.log(jsonBroIn);
@@ -21,28 +21,28 @@ console.log(jsonBroIn);
 
 //var do_signin = function callback (jsonBroIn, _callback){
 
-//	var handler = require('./signin2');
+	var handler = require('./signin2');
 
-//	var handle_signin = function(jsonBroOut) {
-//		console.log("RETURNED!: ", jsonBroOut)
+	var handle_signin = function(jsonBroOut) {
+		console.log("RETURNED!: ", jsonBroOut)
 		//_callback(jsonBroOut);
-//	}
+	}
 	
-	//hanlder.signin(jsonBroIn, handle_signin);
+	handler.signin(jsonBroIn, handle_signin);
 //}
 
 //module.exports.do_signin = do_signin;
 
 //var do_signup = function callback(jsonBroIn, _callback){
 
-	var hanlder = require('./signup2');
+//	var hanlder = require('./signup2');
 
-	var handle_signup = function callback (jsonBroOut){
-		console.log("RETURNED!: ",jsonBroOut);
+//	var handle_signup = function callback (jsonBroOut){
+//		console.log("RETURNED!: ",jsonBroOut);
 		//_callback(jsonBroOut); 
-	}
+//	}
 
-	hanlder.signup(jsonBroIn, handle_signup)
+//	hanlder.signup(jsonBroIn, handle_signup)
 
 //}
 

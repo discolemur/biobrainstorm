@@ -74,7 +74,7 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 			var jsonSignUpText = '{"userName":"' + username + '","passWord":"' + password + '","emailAddress":"' + email + '"}';
 			var jsonSignUp = JSON.parse(jsonSignUpText);
 
-			$http.post("http://localhost:3000/signupjson", jsonSignUp).success(function(data){
+			$http.post("/signup_user", jsonSignUp).success(function(data){
 				if(data.status === 'Failure'){
 					$scope.errorMsg = "Unable to register selected User Name";	
 				}else{
@@ -108,11 +108,12 @@ bioApp.controller('signin', ['$scope', '$http',
 			}else{
 				var jsonSignInText = '{"userName":"' + $scope.username + '","passWord":"' + $scope.password + '"}';
 				var jsonSignIn = JSON.parse(jsonSignInText);
-				$http.post("http://localhost:3000/signinjson", jsonSignIn).success(function(data){
+				$http.post("/signin_user", jsonSignIn).success(function(data){
 					if(data.status === 'Failure'){
 						$scope.errorMsg = 'Invalid username or password';
 					}else{
 						alert("Welcome " + data.userName);
+					        $scope.AUTH = 'T'
 					}
 				});
 			}
@@ -163,7 +164,7 @@ bioApp.controller('search', ['$scope', '$http',
 			var jsonSearchText = '{"searchValue":"' + q + '"}';
 			alert(jsonSearchText);
 			var jsonSearch = JSON.parse(jsonSearchText);
-			var url = "http://localhost:3000/search?";
+			var url = "/search?";
 			var list = q.split(" ");
 			for (var i = 0; i < list.length; i++){
      				url = url + list[i] + "+";

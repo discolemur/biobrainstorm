@@ -45,29 +45,35 @@ router.get('/search', function(req, res) {
 handler.search(req.body, handle_search);
 });
 
-router.get('/signin', function(req, res) {
-	res.render('signin', { title: 'Sign In' });
-	
+// signin_user is the http request to actually sign in
+router.post('/signin_user', function(req, res) {
 	var handler = require('./signin2');
 	var handle_signin = function callback (jsonBroOut) {
-		//console.log("RETURNED!: ", jsonBroOut)
-		//_callback(jsonBroOut);
+	//	console.log("RETURNED!: ", jsonBroOut)
 		res.send(jsonBroOut);
 	}
 	handler.signin(req.body, handle_signin);
-	
 });
 
-router.get('/signup', function(req, res) {
-	res.render('signup', { title: 'Sign Up' });
+// signin is the http request to render the signin page
+router.get('/signin', function(req, res) {
+	res.render('signin', { title: 'Sign In' });
+});
+
+// signup_user is the http request to actually sign in
+router.post('/signup_user', function(req, res) {
 	//should look for signup2 
-	var hanlder = require('./signup2');
+	var handler = require('./signup2');
 	var handle_signup = function callback (jsonBroOut){
-		//console.log("RETURNED!: ",jsonBroOut);
-		//_callback(jsonBroOut);
+	//	console.log("RETURNED!: ",jsonBroOut);
 		res.send(jsonBroOut);
 	}
-	hanlder.signup(req.body, handle_signup)
+	handler.signup(req.body, handle_signup)
+});
+
+// signup is the http request to render the signin page
+router.get('/signup', function(req, res) {
+	res.render('signup', { title: 'Sign Up' });
 });
 
 router.get('/post_question', function(req, res) {

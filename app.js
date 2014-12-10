@@ -44,7 +44,7 @@ var options = {
  * Connect to DB
  */
 
-mongoose.connect(config.database.url);
+//mongoose.connect(config.database.url);
 
 /*
  * Start server.
