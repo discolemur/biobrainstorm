@@ -4,20 +4,6 @@
 
 var bioApp = angular.module('bioApp',[]);
 
-/* Angular Routing */
-
-/*bioApp.config(['$routeProvider',
-  function($routeProvider){
-    $routeProvider.
-      when('/signup',{
-        templateUrl: '/signup',
-	controller: 'signup'
-      }).
-      otherwise({
-        redirectTo: '/'
-      });
-}]);*/
-
 /* Controllers */
 
 bioApp.controller('signup', ['$scope', '$http','$location',
@@ -74,7 +60,7 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 			var jsonSignUpText = '{"userName":"' + username + '","passWord":"' + password + '","emailAddress":"' + email + '"}';
 			var jsonSignUp = JSON.parse(jsonSignUpText);
 
-			$http.post("http://localhost:3000/signupjson", jsonSignUp).success(function(data){
+			$http.post("http://localhost:3000/signuphandler/", jsonSignUp).success(function(data){
 				if(data.status === 'Failure'){
 					$scope.errorMsg = "Unable to register selected User Name";	
 				}else{
@@ -108,7 +94,7 @@ bioApp.controller('signin', ['$scope', '$http',
 			}else{
 				var jsonSignInText = '{"userName":"' + $scope.username + '","passWord":"' + $scope.password + '"}';
 				var jsonSignIn = JSON.parse(jsonSignInText);
-				$http.post("http://localhost:3000/signinjson", jsonSignIn).success(function(data){
+				$http.post("http://localhost:3000/signinhandler", jsonSignIn).success(function(data){
 					if(data.status === 'Failure'){
 						$scope.errorMsg = 'Invalid username or password';
 					}else{

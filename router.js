@@ -13,28 +13,17 @@ router.get('/', function(req, res) {
 	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
 });
 
-router.post('/test', function(req,res){
-	res.send('Sucess');
-});
-
-router.post(/^\/search?((\w+)\+)*(\w+)$/, function(req,res){
-	res.render('home', { title: 'Biobrainstorm : test' });
-        console.log("Success");
-});
-
-router.post('/signupjson', function(req,res){
-	res.send(req.body);
-});
-
 
 
 router.get('/home', function(req, res) {
 	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
 });
+
 //added RH
 router.get('/search', function(req, res) {
 	res.render('search', { title: 'Search' });
-		var handler = require('./search2');
+	
+	var handler = require('./search2');
 
 	var handle_search = function(jsonBroOut) {
 		//console.log("RETURNED!: ",jsonBroOut);
@@ -42,12 +31,14 @@ router.get('/search', function(req, res) {
 		res.send(jsonBroOut);
 	};
 
-handler.search(req.body, handle_search);
+	handler.search(req.body, handle_search);
 });
 
 router.get('/signin', function(req, res) {
 	res.render('signin', { title: 'Sign In' });
-	
+});
+
+router.post('/signinhandler', function(req,res){
 	var handler = require('./signin2');
 	var handle_signin = function callback (jsonBroOut) {
 		//console.log("RETURNED!: ", jsonBroOut)
@@ -60,14 +51,16 @@ router.get('/signin', function(req, res) {
 
 router.get('/signup', function(req, res) {
 	res.render('signup', { title: 'Sign Up' });
-	//should look for signup2 
-	var hanlder = require('./signup2');
+});
+
+router.post('/signuphandler', function(req, res) {
+	var handler = require('./signup2');
 	var handle_signup = function callback (jsonBroOut){
 		//console.log("RETURNED!: ",jsonBroOut);
 		//_callback(jsonBroOut);
 		res.send(jsonBroOut);
-	}
-	hanlder.signup(req.body, handle_signup)
+	};
+	handler.signup(req.body, handle_signup);
 });
 
 router.get('/post_question', function(req, res) {
