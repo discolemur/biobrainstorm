@@ -84,6 +84,17 @@ router.post('/post_questionhandler', function(req, res) {
 router.get('/post_response', function(req, res) {
 	res.render('post_response', { title: 'Post Your Response' });
 });
+
+router.post('/post_responsehandler', function(req, res) {
+	var handler = require('./post_response2');
+	var handle_post_question = function callback (jsonBroOut) {
+	//console.log("RETURNED!: ", jsonBroOut)
+	//_callback(jsonBroOut);
+	res.send(jsonBroOut);
+	};
+	
+	handler.post_response(req.body, handle_post_response);
+});
 //added RH
 router.get('/voting', function(req, res) {
 	res.render('voting', { title: 'Vote' });
