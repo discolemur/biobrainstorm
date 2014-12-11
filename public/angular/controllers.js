@@ -194,8 +194,9 @@ bioApp.controller('search', ['$scope', '$http', '$window', '$cookieStore',
 		$scope.searchBar = '';
 		$scope.results = $cookieStore.get('searchResults'); 
 
-		$scope.remove = function(id) {
-			$http.delete("/delete_question", {_id = id}).success(function(data) {
+		$scope.deleteQuestion = function(id) {
+			var jsonID = { _id: id };
+			$http.delete("/delete_question", jsonID).success(function(data) {
 				if(data.status != 'Success') {
 					alert('Sorry, we failed to remove that question. Try again later.');
 				} else {

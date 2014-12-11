@@ -18,7 +18,7 @@ voteNum: Number -->
 				<td>{{result.messageBody}}</td>
 				<td>{{result.tagTopics}}</td>
 				<td>{{result.userName}}</td>
-				<td ng-if="isCurrentUser(result.userName)"><a href="javascript:;" ng-click="remove(result._id)">Remove</a></td>
+				<td ng-if="isCurrentUser(result.userName)"><a href="javascript:;" ng-click="deleteQuestion(result._id)">Remove</a></td>
 			</tr>	
 		</table>
 	</div>
