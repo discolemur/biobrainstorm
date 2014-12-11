@@ -1,6 +1,6 @@
-<div class="container" ng-controller="search">
+<div class="container" ng-controller="view_all">
 	<div class="title">
-		<p style="padding-bottom:1em;">Search Results</p>
+		<p style="padding-bottom:1em;">All Questions</p>
 	</div>
 <!-- _id: String, 
 userName: String,
@@ -10,14 +10,13 @@ messageType:   String,
 messageBody: String,
 associatedIds: Array,
 voteNum: Number -->
-	<p ng-if="results.length == 0">Sorry, we found no results for your search.</p>
 	<div ng-repeat="result in results" class="result_unit">
 		<div class="subtitle"><p>{{result.title}}</p></div>
 		<!-- p>{{result.messageType}}</p -->
 		<p style="font-size:18pt; padding-bottom: .5em; padding-top: .5em;">{{result.messageBody}}</p>
 		<p>Tags: {{result.tagTopics.join(', ')}}</p>
 		<p>User: {{result.userName}}</p>
-		<a ng-if="isCurrentUser(result.userName)" href="javascript:;" ng-click="deleteQuestion(result._id)" style="color: #FF0000;">Remove</a>
+		<a ng-if="isCurrentUser(result.userName)" href="javascript:;" ng-click="deleteQuestion(result._id)" style="color:#FF0000;">Remove</a>
 	</div>	
 
 </div>

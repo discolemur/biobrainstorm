@@ -78,6 +78,15 @@ textarea {
 	font-size: 2em;
 }
 
+.result_unit {
+	border-bottom: thin dotted #337B7F;
+}
+
+.result_unit p {
+	text-align: left;
+	padding-left: 8%;
+}
+
 .subtitle {
 	margin-top: 1%;
 	font-family: Verdana;
@@ -89,6 +98,8 @@ textarea {
 }
 
 .subtitle p {
+	padding-left: 0%;
+	text-align: center;
 	font-size: 1.25em;
 }
 

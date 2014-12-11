@@ -148,8 +148,8 @@ bioApp.controller('signin', ['$scope', '$http', '$cookieStore', '$window',
 	}]);
 
 
-bioApp.controller('post_question', ['$scope', '$http', '$cookieStore',
-	function($scope, $http, $cookieStore){
+bioApp.controller('post_question', ['$scope', '$http', '$cookieStore', '$window',
+	function($scope, $http, $cookieStore, $window){
 		$scope.description;
 		$scope.tags;
 	
@@ -170,6 +170,9 @@ bioApp.controller('post_question', ['$scope', '$http', '$cookieStore',
 				$http.post("/post_question", jsonPostQuestion).success(function(data){
 					if(data.status != 'Success') {
 						alert('Sorry, not posted.' + data.status + jsonPostQuestion);
+					} else {
+					// REDIRECT TO POST
+						$window.location.href = '/view_all';
 					}
 				});
 			}
@@ -188,31 +191,64 @@ bioApp.controller('contact_us', ['$scope', '$http',
 		}
 	}]);
 
+bioApp.controller('view_all', ['$scope', '$http', '$cookieStore', '$window',
+	function($scope, $http, $cookieStore, $window){
+		$scope.results = null;
+		$http.post("/view_all").success(function(data){
+			$scope.results = data;
+		});
+
+		$scope.deleteQuestion = function(id) {
+			var jsonID = { _id: id };
+			$http.post("/delete_question", jsonID).success(function(data) {
+				if(data.status != 'Success') {
+					alert('Sorry, we failed to remove that question. Try again later.');
+				} else {
+					$window.location.href = '/view_all';
+				}
+			});
+		}
+
+		$scope.isCurrentUser = function(user) {
+			if (user == $cookieStore.get('username')) {
+				return true;
+			}
+			return false;
+		}
+	}]);
+
 bioApp.controller('search', ['$scope', '$http', '$window', '$cookieStore',
 	function($scope, $http, $window, $cookieStore){
 		$scope.headerSearchBar = '';
 		$scope.searchBar = '';
-		$scope.results = $cookieStore.get('searchResults'); 
+		$scope.results = null;
+
+		var jsonSearch = { searchValue: $cookieStore.get('search') };
+		$http.post("/search", jsonSearch).success(function(data){
+			$scope.results = data;
+		});
 
 		$scope.deleteQuestion = function(id) {
 			var jsonID = { _id: id };
-			$http.delete("/delete_question", jsonID).success(function(data) {
+			$http.post("/delete_question", jsonID).success(function(data) {
 				if(data.status != 'Success') {
 					alert('Sorry, we failed to remove that question. Try again later.');
 				} else {
-					alert('Question has been removed.');
+					$window.location.href ='/search_results';
 				}
 			});
 		}
 
 		$scope.headerSearch = function(){
 			var query = $scope.headerSearchBar;
-			$scope.search(query);
+			$cookieStore.put('search', query);
+			$window.location.href ='/search_results';
 		}
 
 		$scope.submitSearch = function(){
 			var query = $scope.searchBar;
-			$scope.search(query);
+			$cookieStore.put('search', query);
+			$window.location.href ='/search_results';
 		}
 
 		$scope.isCurrentUser = function(user) {
@@ -222,12 +258,4 @@ bioApp.controller('search', ['$scope', '$http', '$window', '$cookieStore',
 			return false;
 		}
 
-		$scope.search = function(q){
-			var jsonSearchText = '{"searchValue":"' + q + '"}';
-			var jsonSearch = JSON.parse(jsonSearchText);
-			$http.post("/search", jsonSearch).success(function(data){
-				$cookieStore.put('searchResults',data);
-				$window.location.href = '/search_results';
-			});
-		}
 	}]);

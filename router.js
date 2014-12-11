@@ -86,11 +86,6 @@ router.post('/post_responsehandler', function(req, res) {
 	handler.post_response(req.body, handle_post_response);
 });
 
-//added RH
-router.get('/voting', function(req, res) {
-	res.render('voting', { title: 'Vote' });
-});
-
 router.post('/votinghandler', function(req, res) {
 	var handler = require('./public/js/voting');
 	var handle_voting = function callback (jsonBroOut) {
@@ -132,15 +127,16 @@ router.post('/get_one_responsehandler', function(req, res) {
 	handler.get_one_message(req.body, handle_get_one_message);
 });
 
-router.delete('/delete_question', function(req, res) {
+router.post('/delete_question', function(req, res) {
 	var handler = require('./public/js/delete_question');
+	console.log(req.body);
 	var handle_delete_question = function callback (jsonBroOut) {
 		res.send(jsonBroOut);
 	};
 	handler.delete_question(req.body, handle_delete_question);
 });
 
-router.delete('/delete_response', function(req, res) {
+router.post('/delete_response', function(req, res) {
 	var handler = require('./public/js/delete_response');
 	var handle_delete_response = function callback (jsonBroOut) {
 		res.send(jsonBroOut);
@@ -156,8 +152,16 @@ router.get('/contact', function(req, res) {
 	res.render('contact', { title: 'Contact' });
 });
 
-router.get('/view_unanswered', function(req, res) {
-	res.render('view_unanswered', { title: 'Unanswered Questions' });
+router.post('/view_all', function(req, res) {
+	var handler = require('./public/js/get_all_messages');
+	var handle_get_all_messages = function callback (jsonBroOut) {
+		res.send(jsonBroOut);
+	};
+	handler.get_all_messages(req.body, handle_get_all_messages);
+});
+
+router.get('/view_all', function(req, res) {
+	res.render('view_all', { title: 'All Questions' });
 });
 
 router.all('*', function(req, res){
