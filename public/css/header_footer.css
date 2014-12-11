@@ -8,12 +8,13 @@ html {
 	margin-right: auto;
 	top: 0;
 	left: 0;
-	padding: 1em;
+	padding: .5em;
 	background-color: #337B7F;
 }
 
 #navbar ul {
-	text-align: right;
+	float: right;
+	display: inline;
 	padding-right: 5%;
 }
 
@@ -30,6 +31,8 @@ html {
 
 #navbar a {
 	color: #B3FBFF;
+	font-size: 1.2em;
+	font-family: sans-serif;
 }
 
 #navbar ul li form input {
@@ -41,9 +44,10 @@ html {
 	background-repeat-x: no-repeat;
 	background-repeat-y: no-repeat;
 	padding-left:22px;
-	background-color: {{color}};
 	width: 188px; 
-	max-width:188px;
+	max-width: 188px;
+	font-size: 12pt;
+	background-color: {{color}};
 }
 
 #navtitle {
@@ -51,6 +55,7 @@ html {
 	display: inline;
 	text-align: left;
 	padding-left: 10%;
+	font-size: 1.3em;
 }
 
 #footer {
@@ -66,8 +71,10 @@ html {
 
 #footer p {
 	display: inline;
+	font-size: 1.2em;
 }
 
 #footer a {
 	padding-left: 2em;
+	font-size: 1.2em;
 }

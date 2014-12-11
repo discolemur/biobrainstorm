@@ -4,8 +4,21 @@
 	</div>
 	<div>
 		<table border="1" style="width:90%;border:1px solid black;border-collapse: collapse">
+<!-- _id: String, 
+userName: String,
+tagTopics: [String],    
+title: String,                  
+messageType:   String,
+messageBody: String,
+associatedIds: Array,
+voteNum: Number -->
 			<tr ng-repeat="result in results">
 				<td>{{result.title}}</td>
+				<td>{{result.messageType}}</td>
+				<td>{{result.messageBody}}</td>
+				<td>{{result.tagTopics}}</td>
+				<td>{{result.userName}}</td>
+				<td ng-if="isCurrentUser(result.userName)"><a href="javascript:;" ng-click="remove(result._id)">Remove</a></td>
 			</tr>	
 		</table>
 	</div>

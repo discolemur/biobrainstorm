@@ -166,12 +166,9 @@ bioApp.controller('post_question', ['$scope', '$http', '$cookieStore',
 				messageBody: String, //entire Body Text */
 				var tags = $scope.tags.toLowerCase().split(" ");
 				var jsonPostQuestion = { title: $scope.data_title, userName: $cookieStore.get('username'), messageBody: $scope.description, tagTopics: tags };
-				alert("You clicked the post button\nDescription: " + jsonPostQuestion.messageBody + "\nTags: " + jsonPostQuestion.tagTopics + "\nTitle: " + jsonPostQuestion.title + "\nUsername: " + jsonPostQuestion.userName);
+			//	alert("You clicked the post button\nDescription: " + jsonPostQuestion.messageBody + "\nTags: " + jsonPostQuestion.tagTopics + "\nTitle: " + jsonPostQuestion.title + "\nUsername: " + jsonPostQuestion.userName);
 				$http.post("/post_question", jsonPostQuestion).success(function(data){
-					if(data.status === 'Success') {
-						alert('The question was posted!');
-					}
-					else {
+					if(data.status != 'Success') {
 						alert('Sorry, not posted.' + data.status + jsonPostQuestion);
 					}
 				});
@@ -197,6 +194,16 @@ bioApp.controller('search', ['$scope', '$http', '$window', '$cookieStore',
 		$scope.searchBar = '';
 		$scope.results = $cookieStore.get('searchResults'); 
 
+		$scope.remove = function(id) {
+			$http.delete("/delete_question", {_id = id}).success(function(data) {
+				if(data.status != 'Success') {
+					alert('Sorry, we failed to remove that question. Try again later.');
+				} else {
+					alert('Question has been removed.');
+				}
+			});
+		}
+
 		$scope.headerSearch = function(){
 			var query = $scope.headerSearchBar;
 			$scope.search(query);
@@ -205,6 +212,13 @@ bioApp.controller('search', ['$scope', '$http', '$window', '$cookieStore',
 		$scope.submitSearch = function(){
 			var query = $scope.searchBar;
 			$scope.search(query);
+		}
+
+		$scope.isCurrentUser = function(user) {
+			if (user == $cookieStore.get('username')) {
+				return true;
+			}
+			return false;
 		}
 
 		$scope.search = function(q){

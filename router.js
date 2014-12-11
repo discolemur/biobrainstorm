@@ -13,23 +13,15 @@ router.get('/', function(req, res) {
 	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
 });
 
-
-
 router.get('/home', function(req, res) {
 	res.render('home', { title: 'Biobrainstorm : a bioinformatics community' });
 });
 
-//added RH
 router.post('/search', function(req, res) {
-        
 	var handler = require('./public/js/search');
-
 	var handle_search = function(jsonBroOut) {
-		//console.log("RETURNED!: ",jsonBroOut);
-		//_callback(jsonBroOut);
 		res.send(jsonBroOut);
 	};
-
 	handler.search(req.body, handle_search);
 });
 
@@ -74,7 +66,6 @@ router.get('/post_question', function(req, res) {
 router.post('/post_question', function(req, res) {
 	var handler = require('./public/js/post_question');
 	var handle_post_question = function callback (jsonBroOut) {
-		console.log("RETURNED!: ", jsonBroOut)
 		res.send(jsonBroOut);
 	};
 	handler.post_question(req.body, handle_post_question);
@@ -94,6 +85,7 @@ router.post('/post_responsehandler', function(req, res) {
 	};
 	handler.post_response(req.body, handle_post_response);
 });
+
 //added RH
 router.get('/voting', function(req, res) {
 	res.render('voting', { title: 'Vote' });
@@ -108,11 +100,13 @@ router.post('/votinghandler', function(req, res) {
 	};
 	handler.voting(req.body, handle_voting);
 });
+
 //added RH
 router.get('/get_one_question', function(req, res) {
 	res.render('/get_one_question', { title: 'View Question' });
 	
 });
+
 router.post('/get_one_questionhandler', function(req, res) {
 	var handler = require('./public/js/get_one_message');
 	var handle_get_one_message = function callback (jsonBroOut) {
@@ -127,6 +121,7 @@ router.post('/get_one_questionhandler', function(req, res) {
 router.get('/get_one_response', function(req, res) {
 	res.render('get_one_response', { title: 'View Response' });
 });
+
 router.post('/get_one_responsehandler', function(req, res) {
 	var handler = require('./public/js/get_one_message');
 	var handle_get_one_message = function callback (jsonBroOut) {
@@ -137,13 +132,20 @@ router.post('/get_one_responsehandler', function(req, res) {
 	handler.get_one_message(req.body, handle_get_one_message);
 });
 
-//added RH
-router.get('/delete_question', function(req, res) {
-	res.render('delete_question', { title: 'Delete Question' });
+router.delete('/delete_question', function(req, res) {
+	var handler = require('./public/js/delete_question');
+	var handle_delete_question = function callback (jsonBroOut) {
+		res.send(jsonBroOut);
+	};
+	handler.delete_question(req.body, handle_delete_question);
 });
-//added RH
-router.get('/delete_response', function(req, res) {
-	res.render('delete_response', { title: 'Delete Response' });
+
+router.delete('/delete_response', function(req, res) {
+	var handler = require('./public/js/delete_response');
+	var handle_delete_response = function callback (jsonBroOut) {
+		res.send(jsonBroOut);
+	};
+	handler.delete_response(req.body, handle_delete_response);
 });
 
 router.get('/about', function(req, res) {
@@ -155,7 +157,7 @@ router.get('/contact', function(req, res) {
 });
 
 router.get('/view_unanswered', function(req, res) {
-	res.render('view_unanswered', { title: 'All Questions' });
+	res.render('view_unanswered', { title: 'Unanswered Questions' });
 });
 
 router.all('*', function(req, res){

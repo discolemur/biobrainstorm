@@ -1,7 +1,6 @@
 <div id="navbar" ng-controller='header'>
+	<p id="navtitle"><a href="/home">Biobrainstorm</a></p>
 	<ul>
-		<li id="navtitle"><a href="/home">Biobrainstorm</a></li>
-		<li><p>|</p></li>
 		<li><a href="/view_unanswered">View Unanswered</a></li>
 		<li ng-if="!isAuth()"><a href="/signin">Sign In</a></li>
 		<li ng-if="!isAuth()"><a href="/signup">Sign Up</a></li>
