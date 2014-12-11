@@ -19,7 +19,7 @@ messageDB.remove({ _id: parsedID }, function(err) {
             var success = {'status':'Success'}
         	var jsonBro = JSON.stringify(success);
         	console.log(jsonBro);
-        	mongoose.connection.close();
+        	//mongoose.connection.close();
         	_callback(jsonBro);
 
     }
@@ -29,7 +29,7 @@ messageDB.remove({ _id: parsedID }, function(err) {
       		//return handleError(err)
       		var rejected = {'status':'Failure'};
       		var jsonBro = JSON.stringify(rejected)
-     		 mongoose.connection.close()
+     		 //mongoose.connection.close()
      		 _callback(jsonBro);
     }
 });
