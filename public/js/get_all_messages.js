@@ -13,7 +13,7 @@ var get_all_messages  = function callback (jsonBroIn, _callback) {
       //return handleError(err)
       var rejected = {'status':'Failure'};
       var jsonBro = JSON.stringify(rejected)
-      mongoose.connection.close()
+      //mongoose.connection.close()
       _callback(jsonBro);
     }
     else {
@@ -22,7 +22,7 @@ var get_all_messages  = function callback (jsonBroIn, _callback) {
         var success = {'status':'Success'}
         var jsonBro = JSON.stringify(gotMessage);
         console.log(jsonBro);
-        mongoose.connection.close();
+        //mongoose.connection.close();
         _callback(jsonBro);
       //return JSON to middle ware
     }
