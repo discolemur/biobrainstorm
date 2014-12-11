@@ -29,34 +29,38 @@ bioApp.controller('signup', ['$scope', '$http','$window','$cookieStore',
 			$scope.vpasswordA = ''
 			$scope.emailA = ''
 
-			if ($scope.requestedUserName === ''){$scope.usernameA = '*';valid=false;}
-			if ($scope.requestedPassword === ''){$scope.passwordA = '*';valid=false;}
-			if ($scope.verifyPassword === ''){$scope.vpasswordA = '*';valid=false;}
-			if ($scope.email === ''){$scope.emailA = '*';valid=false;} 
-			if (!valid){
-				$scope.errorMsg = "Please be sure to fill in all data fields";
-			}else{
-				$scope.validateData($scope.requestedUserName,$scope.requestedPassword,$scope.verifyPassword,$scope.email);
-			}
+			$scope.validateData($scope.requestedUserName,$scope.requestedPassword,$scope.verifyPassword,$scope.email);
 		}
 
 		$scope.validateData = function(username,password,vpassword,email){
 			var err = null;
+			// For the error messages to work properly, I am not resetting the boxes to empty strings.
+			if(email.indexOf('@') === -1 || email.indexOf('.') === -1){
+				err = "A valid email address is required";
+				$scope.emailA = '*';
+			}
+			if (password == username) {
+				err = "Your password cannot be your username.";
+				$scope.usernameA = '*';
+				$scope.passwordA = '*';
+				$scope.vpasswordA = '*';
+			}
+			if (password.length < 8) {
+				err = "Your password must be at least 8 characters.";
+				$scope.passwordA = '*';
+				$scope.vpasswordA = '*';
+			}
 			if (password != vpassword) {
 				err = "The passwords do not match.";
+				$scope.passwordA = '*';
+				$scope.vpasswordA = '*';
 			}
-			if (password == username && !err) {
-				err = "Your password cannot be your username.";
-			}
-			if (password.length < 8 && !err) {
-				err =  "Your password must be at least 8 characters.";
+			if (username.length < 3) {
+				err = "Your username must be at least 3 characters.";
+				$scope.usernameA = '*';
 			}
 			if (err) {
 				$scope.errorMsg = err;
-				$scope.passwordA = '*';
-				$scope.vpasswordA = '*';
-				$scope.requestedPassword = '';
-				$scope.verifyPassword = '';
 				return false;
 			}
 			/*alert("You clicked the sign up button with these credentials\n" +
@@ -64,12 +68,7 @@ bioApp.controller('signup', ['$scope', '$http','$window','$cookieStore',
 				$scope.requestedPassword + "\n" + 
 				$scope.verifyPassword + "\n" + 
 				$scope.email + "\n");*/
-			if(email.indexOf('@') === -1 || email.indexOf('.') === -1){
-				$scope.errorMsg = "A valid email address is required";
-				$scope.email = '';
-				$scope.emailA = '*';
-				return false;
-			}
+			
 			var jsonSignUpText = '{"userName":"' + username + '","passWord":"' + password + '","emailAddress":"' + email + '"}';
 			var jsonSignUp = JSON.parse(jsonSignUpText);
 
