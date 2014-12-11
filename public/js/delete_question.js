@@ -6,7 +6,7 @@ var delete_question  = function callback (jsonBroIn, _callback) {
   //var jsonCast = JSON.parse(jsonBroIn);
   //var parsedID = jsonCast.id;
 
-  var parsedID = jsonBroIn.id;
+  var parsedID = jsonBroIn._id;
   
   var messageDB = require('./Messages');
 
