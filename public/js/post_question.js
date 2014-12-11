@@ -18,21 +18,21 @@ var post_question  = function callback (jsonBroIn, _callback) {
     console.log(newMessage)
 
     newMessage.save(function (err, data) {
-    if (err) {
-      console.log(err);
-      var rejected = {'status':'Failure'};
-      jsonBro = JSON.stringify(rejected)
-      _callback(jsonBro);
-    } 
-    else{
-      console.log('Saved ', data );
-      //console.log(data)
-      //console.log("ID from recent addition: ")
-      //console.log(data._id)
+      if (err) {
+        console.log(err);
+        var rejected = {'status':'Failure'};
+        jsonBro = JSON.stringify(rejected);
+        _callback(jsonBro);
+      } 
+      else{
+        console.log('Saved ', data );
+        //console.log(data)
+        //console.log("ID from recent addition: ")
+        //console.log(data._id)
 
-      var success = {'status':'Success'}
+        var success = {'status':'Success'};
         //console.log(users.userName, users.passWord, users.emailAddress)
-        jsonBro = JSON.stringify(data)
+        jsonBro = JSON.stringify(success);
         console.log(jsonBro);
         _callback(jsonBro);
       }

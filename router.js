@@ -71,12 +71,11 @@ router.get('/post_question', function(req, res) {
 	res.render('post_question', { title: 'Post Your Question' });
 });
 
-router.post('/post_questionhandler', function(req, res) {
+router.post('/post_question', function(req, res) {
 	var handler = require('./public/js/post_question');
 	var handle_post_question = function callback (jsonBroOut) {
-	//console.log("RETURNED!: ", jsonBroOut)
-	//_callback(jsonBroOut);
-	res.send(jsonBroOut);
+		console.log("RETURNED!: ", jsonBroOut)
+		res.send(jsonBroOut);
 	};
 	handler.post_question(req.body, handle_post_question);
 });

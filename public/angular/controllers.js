@@ -159,7 +159,22 @@ bioApp.controller('post_question', ['$scope', '$http', '$cookieStore',
 			if (!$cookieStore.get('auth')) {
 				alert("Sorry, you must sign in before posting questions.");
 			} else {
-				alert("You clicked the post button\nDescription: " + $scope.description + "\nTags: " + $scope.tags);
+/*				MiddleWare -> Back End JSON
+				userName: String,
+				tagTopics: [String],
+				title: String, //title of the question
+				messageBody: String, //entire Body Text */
+				var tags = $scope.tags.toLowerCase().split(" ");
+				var jsonPostQuestion = { title: $scope.data_title, userName: $cookieStore.get('username'), messageBody: $scope.description, tagTopics: tags };
+				alert("You clicked the post button\nDescription: " + jsonPostQuestion.messageBody + "\nTags: " + jsonPostQuestion.tagTopics + "\nTitle: " + jsonPostQuestion.title + "\nUsername: " + jsonPostQuestion.userName);
+				$http.post("/post_question", jsonPostQuestion).success(function(data){
+					if(data.status === 'Success') {
+						alert('The question was posted!');
+					}
+					else {
+						alert('Sorry, not posted.' + data.status + jsonPostQuestion);
+					}
+				});
 			}
 		}
 	}]);
