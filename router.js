@@ -20,9 +20,8 @@ router.get('/home', function(req, res) {
 });
 
 //added RH
-router.get('/search', function(req, res) {
-	res.render('search', { title: 'Search' });
-	
+router.post('/search', function(req, res) {
+        
 	var handler = require('./public/js/search');
 
 	var handle_search = function(jsonBroOut) {
@@ -32,6 +31,10 @@ router.get('/search', function(req, res) {
 	};
 
 	handler.search(req.body, handle_search);
+});
+
+router.get('/search_results', function(req, res) {
+	res.render('search_results', { title: 'Biobrainstorm : a bioinformatics community'});
 });
 
 // signin_user is the http request to actually sign in

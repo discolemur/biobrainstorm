@@ -1,8 +1,12 @@
-<div class="container">
+<div class="container" ng-controller="search">
 	<div class="title">
 		<p>Search Results</p>
 	</div>
 	<div>
-		<p>This probably requires crazy javascript.</p>
+		<table border="1" style="width:90%;border:1px solid black;border-collapse: collapse">
+			<tr ng-repeat="result in results">
+				<td>{{result.title}}</td>
+			</tr>	
+		</table>
 	</div>
 </div>

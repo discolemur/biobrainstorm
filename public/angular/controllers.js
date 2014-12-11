@@ -77,7 +77,9 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 
 bioApp.controller('header', ['$scope', '$cookieStore' ,
 	function($scope, $cookieStore){
+
 		$scope.signout = function() {
+			$cookieStore.remove('searchResults');
 			$cookieStore.remove('username');
 			$cookieStore.remove('password');
 			$cookieStore.put('auth', false);
@@ -155,10 +157,11 @@ bioApp.controller('contact_us', ['$scope', '$http',
 		}
 	}]);
 
-bioApp.controller('search', ['$scope', '$http',
-	function($scope, $http){
+bioApp.controller('search', ['$scope', '$http', '$window', '$cookieStore',
+	function($scope, $http, $window, $cookieStore){
 		$scope.headerSearchBar = '';
 		$scope.searchBar = '';
+		$scope.results = $cookieStore.get('searchResults'); 
 
 		$scope.headerSearch = function(){
 			var query = $scope.headerSearchBar;
@@ -171,22 +174,12 @@ bioApp.controller('search', ['$scope', '$http',
 		}
 
 		$scope.search = function(q){
-			alert("got here");
 			var jsonSearchText = '{"searchValue":"' + q + '"}';
-			alert(jsonSearchText);
 			var jsonSearch = JSON.parse(jsonSearchText);
-			var url = "/search?";
-			var list = q.split(" ");
-			for (var i = 0; i < list.length; i++){
-				url = url + list[i] + "+";
-			}
-			url = url.substr(0,url.length-1);
-			$http.post(url, jsonSearch).success(function(data){
-				if(data.status === 'Failure'){
-					$scope.errorMsg = 'Invalid username or password';
-				}else{
-					alert("Welcome " + data.userName);
-				}
+			$http.post("/search", jsonSearch).success(function(data){
+				$cookieStore.put('searchResults',data);
+				alert("Adding " + JSON.stringify(data));
+				$window.location.href = '/search_results';
 			});
 		}
 	}]);
