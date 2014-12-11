@@ -7,34 +7,11 @@ var delete_question  = function callback (jsonBroIn, _callback) {
   //var parsedID = jsonCast.id;
 
   var parsedID = jsonBroIn.id;
-
-
-  var mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/Users/ryanhillary/Desktop/nodejs/userDB');
-  var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function callback () {
-    // yay!
-    console.log("Connected to usersDB Successfully")
-  });
-
-  var Schema = mongoose.Schema;
-
-  var messageSchema = new Schema({
-    userName: String,
-    tagTopics: [String], // possible method to find search results
-    title: String, 
-    messageType:   String,
-    messageBody: String,
-    associatedIds: Array,
-    voteNum: Number
-  });
   
-
   var messageDB = require('./Messages');
 
 
-  messageDB.find({_id:parsedID }).remove().exec();
+  //messageDB.find({_id:parsedID }).remove().exec();
 
 messageDB.remove({ _id: parsedID }, function(err) {
     if (!err) {
