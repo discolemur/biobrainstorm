@@ -178,7 +178,6 @@ bioApp.controller('search', ['$scope', '$http', '$window', '$cookieStore',
 			var jsonSearch = JSON.parse(jsonSearchText);
 			$http.post("/search", jsonSearch).success(function(data){
 				$cookieStore.put('searchResults',data);
-				alert("Adding " + JSON.stringify(data));
 				$window.location.href = '/search_results';
 			});
 		}
