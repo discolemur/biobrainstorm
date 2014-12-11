@@ -4,16 +4,6 @@ var get_all_messages  = function callback (jsonBroIn, _callback) {
   //var jsonCast = JSON.parse(jsonBroIn);
   //var id = jsonCast.id;
 
-
-  var mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/Users/ryanhillary/Desktop/nodejs/userDB');
-  var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function callback () {
-    // yay!
-    console.log("Connected to usersDB Successfully")
-  });
-
   var messageDB = require('./Messages');
 
   messageDB.find({ 'messageType': 'Question'}, function (err, gotMessage) {
@@ -28,7 +18,7 @@ var get_all_messages  = function callback (jsonBroIn, _callback) {
     }
     else {
       //found send it off
-      console.log('Found')
+      console.log('Questions Found')
         var success = {'status':'Success'}
         var jsonBro = JSON.stringify(gotMessage);
         console.log(jsonBro);
