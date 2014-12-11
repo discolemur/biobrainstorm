@@ -21,12 +21,26 @@ a {
 	text-decoration: none;
 }
 
-#about_text {
-	font-size: 18pt;
+input {
+	text-align: left;
 }
 
-.input {
+textarea {
 	text-align: left;
+	height: 200px;
+	max-height: 400px;
+	width: 400px;
+	max-width: 400px;
+	font-size: 1em;
+	line-height: 1.1em;
+}
+
+.longer_input {
+	width: 400px;
+}
+
+#about_text {
+	font-size: 18pt;
 }
 
 .container {
@@ -91,3 +105,4 @@ a {
 	padding-left: 8%;
 	padding-right: 8%;
 }
+

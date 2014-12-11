@@ -4,10 +4,13 @@
 
 var bioApp = angular.module('bioApp',['ngCookies']);
 
+/* Handy functions */
+
+
 /* Controllers */
 
-bioApp.controller('signup', ['$scope', '$http','$location',
-	function($scope, $http){
+bioApp.controller('signup', ['$scope', '$http','$window','$cookieStore',
+	function($scope, $http, $window, $cookieStore){
 		$scope.errorMsg = ''
 		$scope.usernameA = ''
 		$scope.passwordA = ''
@@ -38,8 +41,18 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 		}
 
 		$scope.validateData = function(username,password,vpassword,email){
-			if(password !==vpassword){
-				$scope.errorMsg = "The passwords did not match";
+			var err = null;
+			if (password != vpassword) {
+				err = "The passwords do not match.";
+			}
+			if (password == username && !err) {
+				err = "Your password cannot be your username.";
+			}
+			if (password.length < 8 && !err) {
+				err =  "Your password must be at least 8 characters.";
+			}
+			if (err) {
+				$scope.errorMsg = err;
 				$scope.passwordA = '*';
 				$scope.vpasswordA = '*';
 				$scope.requestedPassword = '';
@@ -64,10 +77,13 @@ bioApp.controller('signup', ['$scope', '$http','$location',
 				if (data.status == 'Failure') {
 					$scope.errorMsg = 'Internal server error.';
 				}else if(data.status === 'Rejected'){
-					$scope.errorMsg = "Unable to register selected User Name";	
+					$scope.errorMsg = "Unable to register selected username.";
 				}else{
-					//alert("Welcome " + data.userName);
-					window.location.href="/home";
+					$cookieStore.put('auth', true);
+					$cookieStore.put('username', username);
+					$cookieStore.put('password', password);
+					$scope.AUTH = true;
+					$window.location.href = '/home';
 				}
 			});
 		}
@@ -124,7 +140,6 @@ bioApp.controller('signin', ['$scope', '$http', '$cookieStore', '$window',
 						$cookieStore.put('username', $scope.username);
 						$cookieStore.put('password', $scope.password);
 						$scope.AUTH = true;
-						//alert("Welcome " + data.userName);
 						$window.location.href = '/home';
 					}
 				});
@@ -133,15 +148,19 @@ bioApp.controller('signin', ['$scope', '$http', '$cookieStore', '$window',
 	}]);
 
 
-bioApp.controller('post_question', ['$scope', '$http',
-	function($scope, $http){
+bioApp.controller('post_question', ['$scope', '$http', '$cookieStore',
+	function($scope, $http, $cookieStore){
 		$scope.description;
 		$scope.tags;
 	
 		$scope.post_question = function(){
-			alert("You clicked the post button\nDescription: " + $scope.description + "\nTags: " + $scope.tags);
 			//need to update this to query mongo db using username and password
 			//and if matching record is found do something with it
+			if (!$cookieStore.get('auth')) {
+				alert("Sorry, you must sign in before posting questions.");
+			} else {
+				alert("You clicked the post button\nDescription: " + $scope.description + "\nTags: " + $scope.tags);
+			}
 		}
 	}]);
 
