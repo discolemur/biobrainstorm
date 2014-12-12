@@ -1,4 +1,5 @@
 body {
+	min-height: 100%;
 	background-color: #52C5CC;
 	margin: 0;
 }
@@ -45,21 +46,23 @@ textarea {
 }
 
 .container {
-	background-color: #B3FBFF;
 	position: absolute;
+	min-height: 100%;
+	background-color: #B3FBFF;
 	text-align: center;
-	height: 100%;
 	width: 70%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	top: 0;
 	right: 0;
+	// Ok, having this comment in here makes the height work.
 	bottom: 0;
 	left: 0;
 }
 
 .container p , .container table {
+	position: relative;
 	text-align: center;
 	font-size: 16pt;
 	margin: auto;
@@ -80,6 +83,7 @@ textarea {
 
 .result_unit {
 	border-bottom: thin dotted #337B7F;
+	padding-bottom: 3em;
 }
 
 .result_unit p {
@@ -103,17 +107,6 @@ textarea {
 	font-size: 1.25em;
 }
 
-.center {
-	position: relative;
-	top: 20%;
-	min-width: 50%;
-	max-width: 70%;
-	min-height: 25%;
-	max-height: 50%;
-	padding: 2em;
-	margin: 0 auto;
-}
-
 #middlesearch {
 	text-align: left;
 	font-size: 2em;
@@ -124,5 +117,16 @@ textarea {
 	text-align: left;
 	padding-left: 8%;
 	padding-right: 8%;
+}
+
+.center {
+	position: relative;
+	min-width: 50%;
+	max-width: 70%;
+	min-height: 25%;
+	max-height: 50%;
+	padding: 2em;
+	margin: 0 auto;
+	padding-top: 15%;
 }
 
