@@ -38,7 +38,7 @@ html {
 #navbar ul li form input {
 	background-image: url(/assets/magnifying_glass.png),none;
 	background-position-x: 3px;
-	background-position-y: 2px;
+	background-position-y: 5px;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	background-repeat: no-repeat;
